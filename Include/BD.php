@@ -1,5 +1,5 @@
 <?php
-require_once('Usuario.php');
+require_once('../Class/Usuario.php');
     class BD{
 
         private static $con;

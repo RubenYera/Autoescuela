@@ -10,15 +10,14 @@
         private $foto;
         private $activo;
         
-        public function __construct($id,$email,$nombre,$apellidos,$password,$fechaNac,$rol,$foto="",$activo){
-            $this->id=$id;
+        public function __construct($email,$nombre,$apellidos,$password,$fechaNac,$foto="",$rol="Alumno",$activo=0){
             $this->email=$email;
             $this->nombre=$nombre;
             $this->apellidos=$apellidos;
             $this->password=$password;
             $this->fechaNac=$fechaNac;
-            $this->rol=$rol;
             $this->foto=$foto;
+            $this->rol=$rol;
             $this->activo=$activo;
         }
 

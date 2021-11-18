@@ -1,6 +1,6 @@
 <?php
 require_once("Session.php");
-require_once("Usuario.php");
+require_once("../Class/Usuario.php");
 require_once("BD.php");
 
     BD::creaConexion();
