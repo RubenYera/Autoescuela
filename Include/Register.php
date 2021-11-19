@@ -2,23 +2,34 @@
     require_once('../Class/Usuario.php');
     require_once('./BD.php');
     require_once('./Session.php');
+    require_once('validator.php');
 
+    $validator = new validator();
+    $campos = array();
     if(isset($_POST['Registrar'])){
         $nombre = $_POST['nombre'];
-        $apellidos = $_POST['apellidos']
+        $apellidos = $_POST['apellidos'];
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $password2 = $_POST['password2'];
         $fecha = $_POST['fechaNac'];
-        $foto = $_POST['foto'];
+        $campos[]=$nombre;
+        $campos[]=$apellidos;
+        $campos[]=$email;
+        $campos[]=$password;
+        $campos[]=$fecha; 
 
-        if(empty($nombre) || empty($apellidos) ||  empty($email) || empty($password) || empty($password2) || empty($fecha)){
-            $error = "Uno de los campos está vacio";
-        }else{
-            
+        foreach ($campos as $valor) {
+            $validator->Requerido($valor);
         }
-        $u = new Usuario($email,$nombre,$apellidos,$password,$fecha);
-        DB::insertaUsuario($u);
+
+        $validator->CadenaRango($nombre,30);
+        $validator->CadenaRango($apellidos,30);
+        $validator->CadenaRango($password,30);
+        if($validator->ValidacionPasada()){
+            $u = new Usuario($email,$nombre,$apellidos,$password,$fecha);
+            // DB::insertaUsuario($u);
+        }
+        
     }
 ?>
 
@@ -31,30 +42,27 @@
     <title>Document</title>
 </head>
 <body>
+
 <div>
-        <?php echo $error?>
         <h3>Registrar Usuario</h3>
         <form action="Register.php" name="form1" method="post">
             <div>
-                <p>Nombre: <input type="text" name="nombre" id="nombre"></p>
+                <p>Nombre: <input type="text" name="nombre" id="nombre"></p> <?php if(isset($_POST['nombre']))echo $validator->ImprimirError($_POST['nombre'])?>
             </div>
             <div>
-                <p>Apellidos: <input type="text" name="Apellidos" id="Apellidos"></p>
+                <p>Apellidos: <input type="text" name="apellidos" id="apellidos"></p> <?php if(isset($_POST['apellidos']))echo $validator->ImprimirError($_POST['apellidos'])?>
             </div>
             <div>
-                <p>Correo: <input type="text" name="email" id="email"></p>
+                <p>Correo: <input type="text" name="email" id="email"></p> <?php if(isset($_POST['email']))echo $validator->ImprimirError($_POST['email'])?>
             </div>
             <div>
-                <p>Contraseña: <input type="password" name="password" id="password"></p>
+                <p>Contraseña: <input type="password" name="password" id="password"></p> <?php if(isset($_POST['password']))echo $validator->ImprimirError($_POST['password'])?>
             </div>
             <div>
-                <p>Confirmar contraseña: <input type="password" name="password2" id="password2"></p>
+                <p>Fecha Nacimiento: <input type="date" name="fechaNac" id="fechaNac"></p> <?php if(isset($_POST['fechaNac']))echo $validator->ImprimirError($_POST['fechaNac'])?>
             </div>
             <div>
-                <p>Fecha Nacimiento: <input type="date" name="fechaNac" id="fechaNac"></p>
-            </div>
-            <div>
-                <p>Foto de perfil: <input type="file" name="foto" id="foto"></p>
+                <p>Rol: <input type="text" name="rol" id="rol"></p> <?php if(isset($_POST['rol']))echo $validator->ImprimirError($_POST['rol'])?>
             </div>
             <div>
                 <input type="submit" name="Registrar" id="Registrar" value="Registrar">

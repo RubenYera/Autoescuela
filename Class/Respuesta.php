@@ -2,12 +2,12 @@
     class Tematica{
         private $id;
         private $enunciado;
-        private $id_Pregunta;
+        private $pregunta;
 
-        public function __construct($id,$enunciado,$id_Pregunta){
+        public function __construct($id,$enunciado,$pregunta){
             $this->id=$id;
             $this->enunciado=$enunciado;
-            $this->id_Pregunta=$id_Pregunta;
+            $this->pregunta=$pregunta;
         }
 
         public function get_id(){
@@ -24,11 +24,11 @@
             $this->enunciado=$enunciado;
         }
 
-        public function get_id_Pregunta(){
-            return $this->id_Pregunta;
+        public function get_pregunta(){
+            return $this->pregunta;
         }
-        public function set_id_Pregunta($id_Pregunta){
-            $this->id_Pregunta=$id_Pregunta;
+        public function set_pregunta($pregunta){
+            $this->pregunta=$pregunta;
         }
 
     }

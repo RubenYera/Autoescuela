@@ -1,16 +1,16 @@
 <?php
     class Examen_Hecho{
         private $id;
-        private $id_Examen;
-        private $id_Alumno;
+        private $Examen;
+        private $Alumno;
         private $fecha;
         private $calificacion;
         private $ejecucion;
 
-        public function __construct($id,$id_Examen,$id_Alumno,$fecha,$calificacion,$ejecucion){
+        public function __construct($id,$Examen,$Alumno,$fecha,$calificacion,$ejecucion){
             $this->id=$id;
-            $this->id_Examen=$id_Examen;
-            $this->id_Alumno=$id_Alumno;
+            $this->Examen=$Examen;
+            $this->Alumno$Alumno=$Alumno;
             $this->fecha=$fecha;
             $this->calificacion=$calificacion;
             $this->ejecucion=$ejecucion;
@@ -23,18 +23,18 @@
             $this->id=$id;
         }
 
-        public function get_id_Examen(){
-            return $this->id_Examen;
+        public function get_Examen(){
+            return $this->Examen;
         }
-        public function set_id_Examen($id_Examen){
-            $this->id_Examen=$id_Examen;
+        public function set_Examen($Examen){
+            $this->Examen=$Examen;
         }
 
-        public function get_id_Alumno(){
-            return $this->id_Alumno;
+        public function get_Alumno$Alumno(){
+            return $this->Alumno$Alumno;
         }
-        public function set_id_Alumno($id_Alumno){
-            $this->id_Alumno=$id_Alumno;
+        public function set_Alumno$Alumno($Alumno){
+            $this->Alumno$Alumno=$Alumno;
         }
 
         public function get_fecha(){
