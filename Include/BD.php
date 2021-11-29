@@ -20,7 +20,8 @@ require_once('../Class/Usuario.php');
             $rol = $consulta['Rol'];
             $foto = $consulta['Foto'];
             $activo = $consulta['Activo'];
-            $u = new Usuario($id,$email,$nombre,$apellidos,$password,$fechaNac,$rol,$foto,$activo);
+            $u = new Usuario($email,$nombre,$apellidos,$password,$fechaNac,$rol,$foto,$activo);
+            $u->set_id($id);
             return $u;
         }
 
@@ -31,6 +32,32 @@ require_once('../Class/Usuario.php');
                 return true;
             }
             return false;
+        }
+
+
+
+        public static function altaUser(Usuario $u)
+        {
+            $consulta = self::$con->prepare("Insert into usuario (Email, Nombre, Apellidos, Password, FechaNac, Rol, Foto, Activo) values(:Email, :nombre, :Apellidos, :Password, :FechaNac, :Rol, :Foto, :Activo)");
+            $email=$u->get_email();
+            $nombre=$u->get_nombre();
+            $apellidos=$u->get_apellidos();
+            $password=$u->get_password();
+            $fechaNac=$u->get_fechaNac();
+            $rol=$u->get_rol();
+            $foto=$u->get_foto();
+            $activo=$u->get_activo();
+            $consulta->bindParam(1,$email);
+            $consulta->bindParam(2,$nombre);
+            $consulta->bindParam(3,$apellidos);
+            $consulta->bindParam(4,$password);
+            $consulta->bindParam(5,$fechaNac);
+            $consulta->bindParam(6,$rol);
+            $consulta->bindParam(7,$foto);
+            $consulta->bindParam(8,$activo);
+            
+            $consulta->execute();
+    
         }
 
     }

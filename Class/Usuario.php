@@ -10,7 +10,7 @@
         private $foto;
         private $activo;
         
-        public function __construct($email,$nombre,$apellidos,$password,$fechaNac,$foto="",$rol="Alumno",$activo=0){
+        public function __construct($email,$nombre,$apellidos,$password,$fechaNac,$rol,$foto="",$activo=0){
             $this->email=$email;
             $this->nombre=$nombre;
             $this->apellidos=$apellidos;
@@ -23,6 +23,10 @@
 
         public function get_id(){
             return $this->id;
+        }
+
+        public function set_id($id){
+            $this->id=$id;
         }
 
         public function get_email(){
