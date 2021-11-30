@@ -7,6 +7,10 @@
     <title>Document</title>
 </head>
 <body>
+<?php
+if(isset($_POST["opcion"])){
+    echo $_POST["opcion"];
+}?>
 <div>
         <h3>Alta preguntas</h3>
         <form action="Alta_Pregunta.php" name="form1" method="post">
@@ -20,13 +24,13 @@
                 <p>Enunciado: <input type="text" name="enunciado" id="enunciado"></p> 
             </div>
             <div>
-                <p>Opcion 1: <input type="text" name="email" id="email">  <input type="radio" name="opcion" id="c1" checked=""> Correcta</p> 
+                <p>Opcion 1: <input type="text" name="opcion1" id="opcion1">  <input type="radio" name="opcion" id="c1" value="1" checked> Correcta</p> 
             </div>
             <div>
-                <p>Opcion 2: <input type="text" name="email" id="email">  <input type="radio" name="opcion" id="c2"> Correcta</p> 
+                <p>Opcion 2: <input type="text" name="opcion2" id="opcion2">  <input type="radio" name="opcion" id="c2" value="2"> Correcta</p> 
             </div>
             <div>
-                <p>Opcion 3: <input type="text" name="email" id="email">  <input type="radio" name="opcion" id="c3"> Correcta</p> 
+                <p>Opcion 3: <input type="text" name="opcion3" id="opcion3">  <input type="radio" name="opcion" id="c3" value="3">  Correcta</p> 
             </div>
             <div>
             </div>
@@ -47,9 +51,10 @@
     require_once('../Class/Tematica.php');
 
     $campos = array();
+    $errores = 0;
     if(isset($_POST["Aceptar"])){
     BD::creaConexion();
-    $tematica = $_POST["Tematica"];
+    $tematica = $_POST["tematica"];
     $Enunciado = $_POST["enunciado"];
     $opcion1 = $_POST["opcion1"];
     $opcion2 = $_POST["opcion2"];
@@ -73,13 +78,20 @@
         $tematica=="Velocidades";
     }
     
+    $respuestas = array();
     if($errores==0){
         $tem = BD::leeTematica($tematica);
-        $pregunta = new Pregunta($Enunciado,$tem)
+        $pregunta = new Pregunta($Enunciado,$tem);
         $respuesta1 = new Respuesta($opcion1,$pregunta);
         $respuesta2 = new Respuesta($opcion2,$pregunta);
         $respuesta3 = new Respuesta($opcion3,$pregunta);
-        $correcta = $_POST["opcion"];
+
+        $respuestas[1] = $respuesta1;
+        $respuestas[2] = $respuesta2;
+        $respuestas[3] = $respuesta3;
+        
+        $correcta = $respuestas[$_POST["opcion"]];
+        
     }
 
 

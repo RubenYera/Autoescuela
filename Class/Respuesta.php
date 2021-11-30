@@ -1,5 +1,5 @@
 <?php
-    class Tematica{
+    class Respuesta{
         private $id;
         private $enunciado;
         private $pregunta;

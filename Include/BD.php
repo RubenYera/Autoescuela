@@ -69,5 +69,32 @@ require_once('../Class/Tematica.php');
             $t-> set_id($id);
             return $t;   
         }
+
+        public static function leeTematicas(){
+            $tematicas = array();
+            $resultado = self::$con->query("SELECT * FROM Tematica");
+            while ($consulta = $resultado->fetch()) {
+            $id = $consulta['ID'];
+            $nombre = $consulta['Nombre'];
+            $t = new Tematica($nombre);
+            $t-> set_id($id);
+            $tematicas[] = $t;
+            }
+            return $tematicas;   
+        }
+
+        public static function altaPregunta($pregunta,$correcta,$tematica){
+            $consulta = self::$con->prepare("Insert into Pregunta (Enunciado, ID_RespuestaCorrecta, Recurso, ID_Tematica) values(:Enunciado, :ID_RespuestaCorrecta, :Recurso, :ID_Tematica)");
+            $enunciado=$pregunta->get_enunciado();
+            $ID_RespuestaCorrecta=$correcta->get_id();
+            $recurso=$pregunta->get_recurso();
+            $ID_Tematica=$tematica->get_id();
+            $consulta->bindParam(1,$enunciado);
+            $consulta->bindParam(2,$ID_RespuestaCorrecta);
+            $consulta->bindParam(3,$recurso);
+            $consulta->bindParam(4,$ID_Tematica);
+           
+            $consulta->execute();
+        }
     }
 ?>
