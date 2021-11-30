@@ -1,5 +1,6 @@
 <?php
 require_once('../Class/Usuario.php');
+require_once('../Class/Tematica.php');
     class BD{
 
         private static $con;
@@ -36,8 +37,7 @@ require_once('../Class/Usuario.php');
 
 
 
-        public static function altaUser(Usuario $u)
-        {
+        public static function altaUser(Usuario $u){
             $consulta = self::$con->prepare("Insert into usuario (Email, Nombre, Apellidos, Password, FechaNac, Rol, Foto, Activo) values(:Email, :nombre, :Apellidos, :Password, :FechaNac, :Rol, :Foto, :Activo)");
             $email=$u->get_email();
             $nombre=$u->get_nombre();
@@ -60,5 +60,14 @@ require_once('../Class/Usuario.php');
     
         }
 
+        public static function leeTematica($tematica){
+            $resultado = self::$con->query("SELECT * FROM Tematica WHERE Nombre='$tematica'");
+            $consulta = $resultado->fetch();
+            $id = $consulta['ID'];
+            $nombre = $consulta['Nombre'];
+            $t = new Tematica($nombre);
+            $t-> set_id($id);
+            return $t;   
+        }
     }
 ?>

@@ -3,15 +3,12 @@
 
         private $id;
         private $enunciado;
-        private $RespuestaCorrecta;
         private $recurso;
         private $Tematica;
         private $Respuestas;
 
-        public function __construct($id,$enunciado,$RespuestaCorrecta,$recurso,$Tematica){
-            $this->id=$id;
+        public function __construct($enunciado,$Tematica,$recurso=""){
             $this->enunciado=$enunciado;
-            $this->RespuestaCorrecta=$RespuestaCorrecta;
             $this->recurso=$recurso;
             $this->Tematica=$Tematica;
         }

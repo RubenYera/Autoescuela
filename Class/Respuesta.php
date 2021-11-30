@@ -4,8 +4,7 @@
         private $enunciado;
         private $pregunta;
 
-        public function __construct($id,$enunciado,$pregunta){
-            $this->id=$id;
+        public function __construct($enunciado,$pregunta){
             $this->enunciado=$enunciado;
             $this->pregunta=$pregunta;
         }

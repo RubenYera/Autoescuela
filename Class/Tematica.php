@@ -4,8 +4,7 @@
         private $id;
         private $nombre;
 
-        public function __construct($id,$nombre){
-            $this->id=$id;
+        public function __construct($nombre){
             $this->nombre=$nombre;
         }
 
