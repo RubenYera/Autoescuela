@@ -7,10 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-<?php
-if(isset($_POST["opcion"])){
-    echo $_POST["opcion"];
-}?>
 <div>
         <h3>Alta preguntas</h3>
         <form action="Alta_Pregunta.php" name="form1" method="post">
@@ -53,55 +49,56 @@ if(isset($_POST["opcion"])){
     $campos = array();
     $errores = 0;
     if(isset($_POST["Aceptar"])){
-    BD::creaConexion();
-    $tematica = $_POST["tematica"];
-    $Enunciado = $_POST["enunciado"];
-    $opcion1 = $_POST["opcion1"];
-    $opcion2 = $_POST["opcion2"];
-    $opcion3 = $_POST["opcion3"];
+        BD::creaConexion();
+        $tematica = $_POST["tematica"];
+        $Enunciado = $_POST["enunciado"];
+        $opcion1 = $_POST["opcion1"];
+        $opcion2 = $_POST["opcion2"];
+        $opcion3 = $_POST["opcion3"];
 
-    $campos[]=$Enunciado;
-    $campos[]=$opcion1;
-    $campos[]=$opcion2;
-    $campos[]=$opcion3;
-    $validator = new validator();
+        $campos[]=$Enunciado;
+        $campos[]=$opcion1;
+        $campos[]=$opcion2;
+        $campos[]=$opcion3;
+        $validator = new validator();
 
-    foreach ($campos as $valor) {
-        if(!$validator->Requerido($valor))
-        $errores+=1;
-    }
+        foreach ($campos as $valor) {
+            if(!$validator->Requerido($valor))
+            $errores+=1;
+        }
 
-    $nombreTematica="";
-    if(strcmp($tematica,"1")==0){
-        $nombreTematica="Señales";
-    }else{
-        $nombreTematica="Velocidades";
-    }
-    
-    $respuestas = array();
-    if($errores==0){
-        $tem = BD::leeTematica($nombreTematica);
-        $pregunta = new Pregunta($Enunciado,$tem);
-        BD::altaPregunta($pregunta);
-        $pregunta = leePreguntaEnunciado($pregunta->get_enunciado());//Para darle una ID
-        $respuesta1 = new Respuesta($opcion1,$pregunta);
-        $respuesta2 = new Respuesta($opcion2,$pregunta);
-        $respuesta3 = new Respuesta($opcion3,$pregunta);
-        //Grabamos las Respuestas
-        BD::altaRespuesta($respuesta1);
-        BD::altaRespuesta($respuesta2);
-        BD::altaRespuesta($respuesta3);
-
-        $respuestas[1] = $respuesta1;
-        $respuestas[2] = $respuesta2;
-        $respuestas[3] = $respuesta3;
+        $nombreTematica="";
+        if(strcmp($tematica,"1")==0){
+            $nombreTematica="Señales";
+        }else{
+            $nombreTematica="Velocidades";
+        }
         
-        $correcta = $respuestas[$_POST["opcion"]];
-        BD::grabaRespuestaCorrecta($pregunta,$correcta);
-        
+        $respuestas = array();
+        if($errores==0){
+            $tem = BD::leeTematica($nombreTematica);
+            $pregunta = new Pregunta($Enunciado,$tem);
+            //BD::altaPregunta($pregunta);
+            $pregunta = BD::leePreguntaEnunciado($pregunta->get_enunciado());//Para darle una ID
+            $respuesta1 = new Respuesta($opcion1,$pregunta);
+            $respuesta2 = new Respuesta($opcion2,$pregunta);
+            $respuesta3 = new Respuesta($opcion3,$pregunta);
+            //Grabamos las Respuestas
+            // BD::altaRespuesta($respuesta1);
+            // BD::altaRespuesta($respuesta2);
+            // BD::altaRespuesta($respuesta3);
+            //Las leemos para darle ID
+            $respuesta1 = BD::leeRespuestaEnunciado($respuesta1->get_enunciado());
+            $respuesta2 = BD::leeRespuestaEnunciado($respuesta2->get_enunciado());
+            $respuesta3 = BD::leeRespuestaEnunciado($respuesta3->get_enunciado());
+            $respuestas[1] = $respuesta1;
+            $respuestas[2] = $respuesta2;
+            $respuestas[3] = $respuesta3;
+            
+            $correcta = $respuestas[$_POST["opcion"]];
+            BD::grabaRespuestaCorrecta($correcta);
+            
+        }
     }
-
-
-}
 
 ?>

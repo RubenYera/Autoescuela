@@ -9,7 +9,7 @@
 </head>
 <body>
     <div>
-        <?php echo $error?>
+        <?php if(isset($error))echo $error?>
         <form action="LoginForm.php" name="form1" method="post">
             <div>
                 <p>Correo: <input type="text" name="email" id="email"></p>
@@ -48,8 +48,9 @@ require_once("BD.php");
                     $error = "Contraseña incorrecta";
                 }else{
                     Session::iniciar();
-                    Session::escribir('Usuario',BD::obtieneUser($correo));
+                    Session::escribir('Usuario',BD::obtieneUser($email));
                     header("Location: https://www.google.es");
+                    // var_dump(BD::obtieneUser($email));
                 }
 
             }else{

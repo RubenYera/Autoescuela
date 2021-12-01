@@ -38,7 +38,7 @@ require_once('../Class/Tematica.php');
 
 
         public static function altaUser(Usuario $u){
-            $consulta = self::$con->prepare("Insert into usuario (Email, Nombre, Apellidos, Password, FechaNac, Rol, Foto, Activo) values(:Email, :nombre, :Apellidos, :Password, :FechaNac, :Rol, :Foto, :Activo)");
+            $consulta = self::$con->prepare("Insert into usuario (Email, Nombre, Apellidos, Password, FechaNac, Rol, Foto, Activo) values(:Email, :Nombre, :Apellidos, :Password, :FechaNac, :Rol, :Foto, :Activo)");
             $email=$u->get_email();
             $nombre=$u->get_nombre();
             $apellidos=$u->get_apellidos();
@@ -47,20 +47,30 @@ require_once('../Class/Tematica.php');
             $rol=$u->get_rol();
             $foto=$u->get_foto();
             $activo=$u->get_activo();
-            $consulta->bindParam(1,$email);
-            $consulta->bindParam(2,$nombre);
-            $consulta->bindParam(3,$apellidos);
-            $consulta->bindParam(4,$password);
-            $consulta->bindParam(5,$fechaNac);
-            $consulta->bindParam(6,$rol);
-            $consulta->bindParam(7,$foto);
-            $consulta->bindParam(8,$activo);
+            $consulta->bindParam(":Email",$email);
+            $consulta->bindParam(":Nombre",$nombre);
+            $consulta->bindParam(":Apellidos",$apellidos);
+            $consulta->bindParam(":Password",$password);
+            $consulta->bindParam(":FechaNac",$fechaNac);
+            $consulta->bindParam(":Rol",$rol);
+            $consulta->bindParam(":Foto",$foto);
+            $consulta->bindParam(":Activo",$activo);
             
             $consulta->execute();
     
         }
 
-        public static function leeTematica($nombre){
+        public static function leeTematica($id){
+            $resultado = self::$con->query("SELECT * FROM tematica WHERE ID='$id'");
+            $consulta = $resultado->fetch();
+            $id = $consulta['ID'];
+            $nombre = $consulta['Nombre'];
+            $t = new Tematica($nombre);
+            $t-> set_id($id);
+            return $t;   
+        }
+
+        public static function leeTematicaNombre($nombre){
             $resultado = self::$con->query("SELECT * FROM tematica WHERE Nombre='$nombre'");
             $consulta = $resultado->fetch();
             $id = $consulta['ID'];
@@ -95,11 +105,12 @@ require_once('../Class/Tematica.php');
             $consulta->execute();
         }
 
-        public static function grabaRespuestaCorrecta($pregunta,$respuesta){
-            $id_pregunta=$pregunta->get_id();
+        public static function grabaRespuestaCorrecta($respuesta){
+            $id_pregunta=$respuesta->get_pregunta();
+            $id_pregunta=$id_pregunta->get_id();
             $id_respuesta=$respuesta->get_id();
-            $consulta = self::$con->prepare("UPDATE preguntas SET ID_RespuestaCorrecta = '$id_respuesta' WHERE `preguntas`.`ID` = '$id_pregunta';");
-
+            $consulta = self::$con->prepare("UPDATE preguntas SET ID_RespuestaCorrecta = '$id_respuesta' WHERE ID = '$id_pregunta'");
+            $consulta->execute();
         }
 
         public static function altaRespuesta($respuesta){
@@ -107,8 +118,8 @@ require_once('../Class/Tematica.php');
             $enunciado=$respuesta->get_enunciado();
             $ID_Pregunta=$respuesta->get_pregunta();
             $ID_Pregunta=$ID_Pregunta->get_id();
-            $consulta->bindParam(1,$enunciado);
-            $consulta->bindParam(2,$ID_Pregunta);
+            $consulta->bindParam(":Enunciado",$enunciado);
+            $consulta->bindParam(":ID_Pregunta",$ID_Pregunta);
             $consulta->execute();
         }
 
@@ -118,8 +129,8 @@ require_once('../Class/Tematica.php');
             $id = $consulta['ID'];
             $enunciado = $consulta['Enunciado'];
             $recurso = $consulta['Recurso'];
-            $tematica = $consulta['Tematica'];
-            $tematica = $this->leeTematica();
+            $tematica = $consulta['ID_Tematica'];
+            $tematica = self::leeTematica($tematica);
             $P = new Pregunta($enunciado,$tematica,$recurso);
             $P->set_id($id);
             return $P;   
@@ -131,25 +142,31 @@ require_once('../Class/Tematica.php');
             $id = $consulta['ID'];
             $enunciado = $consulta['Enunciado'];
             $recurso = $consulta['Recurso'];
-            $tematica = $consulta['Tematica'];
-            $tematica = $this->leeTematica();
+            $tematica = $consulta['ID_Tematica'];
+            $tematica = self::leeTematica($tematica);
             $P = new Pregunta($enunciado,$tematica,$recurso);
             $P->set_id($id);
             return $P;   
         }
 
-        public static function leeRespuesta($enunciado){
+        public static function leeRespuestaEnunciado($enunciado){
             $resultado = self::$con->query("SELECT * FROM respuestas WHERE Enunciado='$enunciado'");
             $consulta = $resultado->fetch();
             $id = $consulta['ID'];
             $enunciado = $consulta['Enunciado'];
             $pregunta = $consulta['ID_Pregunta'];
-            $pregunta = leePregunta($pregunta);
-            $P = new Pregunta($enunciado,$tematica,$recurso);
-            $P->set_id($id);
-            return $P;   
+            $pregunta = self::leePregunta($pregunta);
+            $r = new Respuesta($enunciado,$pregunta);
+            $r->set_id($id);
+            return $r;   
         }
 
+        public static function altaTematica($tematica){
+            $consulta = self::$con->prepare("Insert into tematica (Nombre) values(:Nombre)");
+            $nombre=$tematica->get_nombre();
+            $consulta->bindParam(":Nombre",$nombre);
+            $consulta->execute();  
+        }
 
     
     }

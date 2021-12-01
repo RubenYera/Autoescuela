@@ -39,7 +39,7 @@
         if(!$validator->Email($email)){
         $errores+=1;
         }else{
-            if(!BD::compruebaUser($email))
+            if(BD::compruebaUser($email))
             $errores+=1;
         }
         
@@ -51,8 +51,8 @@
         
         if($errores==0){
             $u = new Usuario($email,$nombre,$apellidos,$password,$fecha,$rol);
-            // BD::altaUser($u);
-            var_dump($u);
+            BD::altaUser($u);
+            //var_dump($u);
         }
         
     }
