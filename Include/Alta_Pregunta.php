@@ -71,26 +71,33 @@ if(isset($_POST["opcion"])){
         $errores+=1;
     }
 
-    
-    if($tematica==1){
-        $tematica=="Señales";
+    $nombreTematica="";
+    if(strcmp($tematica,"1")==0){
+        $nombreTematica="Señales";
     }else{
-        $tematica=="Velocidades";
+        $nombreTematica="Velocidades";
     }
     
     $respuestas = array();
     if($errores==0){
-        $tem = BD::leeTematica($tematica);
+        $tem = BD::leeTematica($nombreTematica);
         $pregunta = new Pregunta($Enunciado,$tem);
+        BD::altaPregunta($pregunta);
+        $pregunta = leePreguntaEnunciado($pregunta->get_enunciado());//Para darle una ID
         $respuesta1 = new Respuesta($opcion1,$pregunta);
         $respuesta2 = new Respuesta($opcion2,$pregunta);
         $respuesta3 = new Respuesta($opcion3,$pregunta);
+        //Grabamos las Respuestas
+        BD::altaRespuesta($respuesta1);
+        BD::altaRespuesta($respuesta2);
+        BD::altaRespuesta($respuesta3);
 
         $respuestas[1] = $respuesta1;
         $respuestas[2] = $respuesta2;
         $respuestas[3] = $respuesta3;
         
         $correcta = $respuestas[$_POST["opcion"]];
+        BD::grabaRespuestaCorrecta($pregunta,$correcta);
         
     }
 
