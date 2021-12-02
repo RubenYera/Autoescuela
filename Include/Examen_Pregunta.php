@@ -9,20 +9,24 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="button" value="Cargar Preguntas">
+    <form action="Examen_Pregunta.php" method="POST">
+        <input type="button" value="Cargar Preguntas" name="CargarPreguntas" id="CargarPreguntas">
 
-    <div id="Caja_preguntas" >
-        <div id="pregunta1" class="pregunta" draggable="true">
-            asdfsadfasdf
-        </div>
-        <div id="pregunta2" class="pregunta" draggable="true">
-            hgjjhkhjk
-        </div>
-        <div id="pregunta3" class="pregunta" draggable="true">
-            tyttytyu
-        </div>
-    </div>
+        <div id="Caja_preguntas" ></div>
 
-    <div id="Caja_Preguntas_Examen"></div>
+        <div id="Caja_Preguntas_Examen"></div>
+        <input type="button" value="Guardar" name="Guardar" id="Guardar">
+    </form>
+    
 </body>
 </html>
+<?php
+    require_once("./BD.php");
+    $preguntas = array();
+    // if(isset($_POST["CargarPreguntas"])){
+    //     BD::creaConexion();
+    //     echo BD::leePreguntasJSON();
+    //     $error=1;
+    // }
+
+?>

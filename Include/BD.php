@@ -1,6 +1,7 @@
 <?php
 require_once('../Class/Usuario.php');
 require_once('../Class/Tematica.php');
+require_once('../Class/Pregunta.php');
     class BD{
 
         private static $con;
@@ -147,6 +148,21 @@ require_once('../Class/Tematica.php');
             $P = new Pregunta($enunciado,$tematica,$recurso);
             $P->set_id($id);
             return $P;   
+        }
+
+        public static function leePreguntas(){
+            $preguntas = array();
+            $resultado = self::$con->query("SELECT * FROM preguntas");
+            while ($consulta = $resultado->fetch()) {
+                $id = $consulta['ID'];
+                $enunciado = $consulta['Enunciado'];
+                $recurso = $consulta['Recurso'];
+                $tematica = self::leeTematica($consulta['ID_Tematica']);
+                $p=new Pregunta($enunciado,$tematica,$recurso);
+                $p->set_id($id);
+                $preguntas[] = $p;
+            }
+            return $preguntas;
         }
 
         public static function leeRespuestaEnunciado($enunciado){

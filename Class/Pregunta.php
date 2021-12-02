@@ -1,11 +1,10 @@
 <?php
-    class Pregunta{
+    class Pregunta implements jsonSerializable{
 
         private $id;
         private $enunciado;
         private $recurso;
         private $Tematica;
-        private $Respuestas;
 
         public function __construct($enunciado,$Tematica,$recurso=""){
             $this->enunciado=$enunciado;
@@ -53,5 +52,13 @@
         }
         public function set_Respuestas($Respuestas){
             $this->Respuestas=$Respuestas;
+        }
+
+        public function jsonSerialize(){
+            return[
+            'id' => $this->id,
+            'enunciado' => $this->enunciado,
+            'recurso' => $this->recurso,
+            'Tematica' => $this->Tematica];
         }
     }

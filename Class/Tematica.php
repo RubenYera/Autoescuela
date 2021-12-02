@@ -1,5 +1,5 @@
 <?php
-    class Tematica {
+    class Tematica implements jsonSerializable{
 
         private $id;
         private $nombre;
@@ -20,6 +20,13 @@
         }
         public function set_nombre($nombre){
             $this->nombre=$nombre;
+        }
+
+        public function jsonSerialize(){
+            return [
+                'id' => $this->id,
+                'nombre' => $this->nombre
+            ];
         }
     }
 ?>

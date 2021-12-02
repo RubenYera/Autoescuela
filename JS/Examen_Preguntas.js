@@ -1,13 +1,16 @@
 window.addEventListener("load",function(){
 
-    const btnCargar=document.getElementById("Cargar Preguntas");
+    const btnCargar=document.getElementById("CargarPreguntas");
     const CajaPreguntas=document.getElementById("Caja_preguntas");
     const Caja_Preguntas_Examen=document.getElementById("Caja_Preguntas_Examen");
-    const divs=CajaPreguntas.getElementsByTagName("div");
+    const divs=CajaPreguntas.getElementsByClassName("pregunta");
 
-    // for(let i=0;i<this.dispatchEvent.length;i++){
-    //     divs[i].ondragstart=function(ev){
-    //         ev.dataTransfer.setData("Text", ev.target.id);
+    // for(let i=0;i<divs.length;i++){
+    //     divs[i].ondragenter=function(ev){
+    //         if ( ev.target.className == "pregunta" ) {
+    //             ev.preventDefault();
+    //             ev.target.style.border = "3px dotted red";
+    //         }
     //     }
     // }
     
@@ -28,19 +31,83 @@ window.addEventListener("load",function(){
     Caja_Preguntas_Examen.ondrop=function(ev){
         ev.preventDefault();
         const id=ev.dataTransfer.getData("Text");
-        ev.target.appendChild(document.getElementById(id));
+        if ( ev.target.className == "pregunta" ) {
+            ev.target.parentElement.appendChild(document.getElementById(id));
+        }else{
+            ev.target.appendChild(document.getElementById(id));
+        }
     }
 
     CajaPreguntas.ondrop=function(ev){
         ev.preventDefault();
         const id=ev.dataTransfer.getData("Text");
-        ev.target.appendChild(document.getElementById(id));
+        if ( ev.target.className == "pregunta" ) {
+            ev.target.parentElement.appendChild(document.getElementById(id));
+        }else{
+            ev.target.appendChild(document.getElementById(id));
+        }
     }
 
 
-    // btnCargar.onClick=function(){
+    btnCargar.onclick=function(){
+        PedirPreguntas();
+    }
 
+    // function PedirPreguntas(){
+    //     const ajax = new XMLHttpRequest();
+    //     ajax.onreadystatechange=function(){
+    //         if(ajax.readyState==4 && ajax.status==200){
+    //             var objJavascript = JSON.parse(ajax.responseText);
+    //             for(let i=0;i<objJavascript.length;i++){
+    //                 var div = document.createElement("div");
+    //                 div.innerHTML = objJavascript[i].id+" "+objJavascript[i].Nombre;
+    //                 div.className="pregunta";
+    //                 CajaPreguntas.appendChild(div);
+    //             }
+    //         }
+    //     }
+    //     ajax.open("POST", "../Include/Examen_Pregunta.php");
+    //     ajax.send();
     // }
+
+    function PedirPreguntas() {
+        fetch("CargaPreguntas.php",{
+            method:"POST"
+        }).then(response => response.json())
+          .catch(error=>console.error("Error","error"))
+          .then(response=> {
+            crearContenido(response);
+          })
+        // const ajax = new XMLHttpRequest();
+        // ajax.onreadystatechange=function(){
+        //     if(ajax.readyState==4 && ajax.status==200){
+        //         var objJavascript=JSON.parse(ajax.responseText);
+        //         if(objJavascript.length>0){
+        //             for(let i=0;i<objJavascript.length;i++){
+        //                 var div=crearContenido(objJavascript[i]);
+        //                 CajaPreguntas.appendChild(div);
+        //                 // var br = document.createElement("br")
+        //                 // contenedor.appendChild(br);
+        //                 CajaPreguntas.scrollTop=contenedor.scrollHeight;
+        //             }
+        //         }
+        //     }
+        // }
+
+        // ajax.open("GET", "../Include/CargaPreguntas.php" );
+        // ajax.send();
+    }
+
+    function crearContenido(fila) {
+        for(let i of fila){
+            const div = document.createElement("div");
+            div.innerHTML=i.id+"  "+i.enunciado;
+            div.setAttribute("id","pregunta"+i.id);
+            div.setAttribute("class","pregunta");
+            div.setAttribute("draggable","true");
+            CajaPreguntas.appendChild(div);
+        }
+    }
 
     function PedirExamenes() {
         const ajax = new XMLHttpRequest();
