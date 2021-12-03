@@ -1,6 +1,7 @@
 window.addEventListener("load",function(){
 
     const btnCargar=document.getElementById("CargarPreguntas");
+    const btnGuardar=document.getElementById("Guardar");
     const CajaPreguntas=document.getElementById("Caja_preguntas");
     const Caja_Preguntas_Examen=document.getElementById("Caja_Preguntas_Examen");
     const divs=CajaPreguntas.getElementsByClassName("pregunta");
@@ -51,6 +52,17 @@ window.addEventListener("load",function(){
 
     btnCargar.onclick=function(){
         PedirPreguntas();
+    }
+    btnGuardar.onclick=function(){
+        preguntas = ObtienePreguntas();
+        var data = new FormData();
+        fetch("Examen_Preguntas.js",{
+            method:"POST"
+        }).then(response => response.json())
+          .catch(error=>console.error("Error","error"))
+          .then(response=> {
+            crearContenido(response);
+          })
     }
 
     // function PedirPreguntas(){
@@ -103,31 +115,43 @@ window.addEventListener("load",function(){
             const div = document.createElement("div");
             div.innerHTML=i.id+"  "+i.enunciado;
             div.setAttribute("id","pregunta"+i.id);
+            div.setAttribute("name","pregunta"+i.id);
             div.setAttribute("class","pregunta");
             div.setAttribute("draggable","true");
             CajaPreguntas.appendChild(div);
         }
     }
 
-    function PedirExamenes() {
-        const ajax = new XMLHttpRequest();
-        ajax.onreadystatechange=function(){
-            if(ajax.readyState==4 && ajax.status==200){
-                var respuesta=JSON.parse(ajax.responseText);
-                if(respuesta.mensaje.length>0){
-                    for(let i=0;i<respuesta.mensaje.length;i++){
-                        var div=crearContenido(respuesta.mensaje[i],usuario.value);
-                        contenedor.appendChild(div);
-                        // var br = document.createElement("br")
-                        // contenedor.appendChild(br);
-                        contenedor.scrollTop=contenedor.scrollHeight;
-                    }
-                }
-                ultimo=respuesta.ultimo;
-            }
+    function ObtienePreguntas(){
+        var preguntas = Caja_Preguntas_Examen.children;
+        var ids = [];
+        for(let i=0;i<preguntas.length;i++){
+            var id = preguntas.getAttribute("id").substr(9);
+            ids.push(id);
+            return ids;
         }
-
-        ajax.open("GET", "Pedir.php?ultimo="+ultimo );
-        ajax.send();
     }
-});
+
+
+//     function PedirExamenes() {
+//         const ajax = new XMLHttpRequest();
+//         ajax.onreadystatechange=function(){
+//             if(ajax.readyState==4 && ajax.status==200){
+//                 var respuesta=JSON.parse(ajax.responseText);
+//                 if(respuesta.mensaje.length>0){
+//                     for(let i=0;i<respuesta.mensaje.length;i++){
+//                         var div=crearContenido(respuesta.mensaje[i],usuario.value);
+//                         contenedor.appendChild(div);
+//                         // var br = document.createElement("br")
+//                         // contenedor.appendChild(br);
+//                         contenedor.scrollTop=contenedor.scrollHeight;
+//                     }
+//                 }
+//                 ultimo=respuesta.ultimo;
+//             }
+//         }
+
+//         ajax.open("GET", "Pedir.php?ultimo="+ultimo );
+//         ajax.send();
+//     }
+ });

@@ -23,10 +23,5 @@
 <?php
     require_once("./BD.php");
     $preguntas = array();
-    // if(isset($_POST["CargarPreguntas"])){
-    //     BD::creaConexion();
-    //     echo BD::leePreguntasJSON();
-    //     $error=1;
-    // }
 
 ?>
