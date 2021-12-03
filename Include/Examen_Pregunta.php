@@ -10,7 +10,7 @@
 </head>
 <body>
     <form action="Examen_Pregunta.php" method="POST">
-        <input type="button" value="Cargar Preguntas" name="CargarPreguntas" id="CargarPreguntas">
+        <input type="search" id="filtro" name="filtro">
 
         <div id="Caja_preguntas" ></div>
 

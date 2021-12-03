@@ -1,19 +1,18 @@
 window.addEventListener("load",function(){
 
-    const btnCargar=document.getElementById("CargarPreguntas");
+    PedirPreguntas();
     const btnGuardar=document.getElementById("Guardar");
     const CajaPreguntas=document.getElementById("Caja_preguntas");
     const Caja_Preguntas_Examen=document.getElementById("Caja_Preguntas_Examen");
-    const divs=CajaPreguntas.getElementsByClassName("pregunta");
+    const divs=CajaPreguntas.children;
+    const filtro=document.getElementById("filtro");
 
-    // for(let i=0;i<divs.length;i++){
-    //     divs[i].ondragenter=function(ev){
-    //         if ( ev.target.className == "pregunta" ) {
-    //             ev.preventDefault();
-    //             ev.target.style.border = "3px dotted red";
-    //         }
-    //     }
-    // }
+
+    for(let i=0;i<divs.length;i++){
+        divs[i].onclick=function(){
+            divs[i].classList.add("marcado");
+        }
+    }
     
     Caja_Preguntas_Examen.ondragstart=function(ev){
         ev.dataTransfer.setData("Text", ev.target.id);
@@ -49,10 +48,6 @@ window.addEventListener("load",function(){
         }
     }
 
-
-    btnCargar.onclick=function(){
-        PedirPreguntas();
-    }
     btnGuardar.onclick=function(){
         preguntas = ObtienePreguntas();
         var data = new FormData();
@@ -65,6 +60,16 @@ window.addEventListener("load",function(){
           })
     }
 
+    filtro.onkeyup=function(){
+        const divs=CajaPreguntas.getElementsByTagName("div");
+        for(let i=0;i<divs.length;i++){
+            divs[i].classList.remove("marcado");
+            if(divs[i].innerHTML.indexOf(filtro.value)<0)
+                divs[i].classList.add("oculto");
+            else
+                divs[i].classList.remove("oculto");
+         }
+    }
     // function PedirPreguntas(){
     //     const ajax = new XMLHttpRequest();
     //     ajax.onreadystatechange=function(){
