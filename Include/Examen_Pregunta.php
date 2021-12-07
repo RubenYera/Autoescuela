@@ -12,6 +12,8 @@
 <body>
     <?php include ("./Menu.php");?>
     <form action="Examen_Pregunta.php" method="POST">
+        <p>Descripcion <br><input type="text" name="Descripcion" id="Descripcion"></p>
+        <p>Duración <br><input type="text" name="Duracion" id="Duracion"></p>
         <input type="search" id="filtro" name="filtro">
 
         <div id="Caja_preguntas" ></div>

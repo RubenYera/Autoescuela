@@ -51,15 +51,23 @@ window.addEventListener("load",function(){
     btnGuardar.onclick=function(){
         var preguntas = ObtienePreguntas();
         var data = new FormData();
+        var duracion = document.getElementById("Duracion");
+        var descripcion = document.getElementById("Descripcion");
+        data.append("Duracion",duracion.value);
+        data.append("Descripcion",descripcion.value);
         data.append("preguntas",preguntas);
-        fetch("../Include/Examen_Pregunta.php",{
+        fetch("../Include/Guarda_Examen.php",{
             method:"POST",
             body:data
         })
             .then(response => response.json())
             .catch(error=>console.log("Error",error))
             .then(response=> {
-                ObtienePreguntas(response);
+               if(response.respuesta){
+                   alert("Exito");
+               }else{
+                   alert("Fallo");
+               }
             })
     }
 
@@ -136,8 +144,9 @@ window.addEventListener("load",function(){
         for(let i=0;i<preguntas.length;i++){
             var id = preguntas[i].getAttribute("id").substr(8);
             ids.push(id);
-            return ids;
+            
         }
+        return ids;
     }
 
 

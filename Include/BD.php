@@ -94,6 +94,10 @@ require_once('../Class/Pregunta.php');
             return $tematicas;   
         }
 
+        public static function altaExamen($examen,$preguntas){
+            $consulta = self::$con->prepare("Insert into examen")
+        }
+        
         public static function altaPregunta($pregunta){
             $consulta = self::$con->prepare("Insert into preguntas (Enunciado, Recurso, ID_Tematica) values(:Enunciado, :Recurso, :ID_Tematica)");
             $enunciado=$pregunta->get_enunciado();
@@ -130,8 +134,8 @@ require_once('../Class/Pregunta.php');
             $id = $consulta['ID'];
             $enunciado = $consulta['Enunciado'];
             $recurso = $consulta['Recurso'];
-            $tematica = $consulta['ID_Tematica'];
-            $tematica = self::leeTematica($tematica);
+            $id_tematica = $consulta['ID_Tematica'];
+            $tematica = self::leeTematica($id_tematica);
             $P = new Pregunta($enunciado,$tematica,$recurso);
             $P->set_id($id);
             return $P;   
