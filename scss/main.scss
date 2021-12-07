@@ -4,13 +4,4 @@ body {
     padding: 0px;
     margin: 0px;
 }
-
-footer {
-    @include set_colores_normales;
-    @include set_box-sizing(border-box);
-    position: absolute;
-    width: 100%;
-    bottom: 0px;
-    padding: 5px;
-}
 @import "./layout/Menu";

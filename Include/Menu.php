@@ -1,15 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/main.css">
-    <title>Document</title>
-</head>
-<body>
+<?php
+    require_once("./Session.php");
+    require_once("../Class/Usuario.php");
+    
+    Session::iniciar();
+    $u = Session::leer('Usuario');
+    
+    if(strcmp($u->get_rol(),"Profesor")==0){
+?>
         <header>
-            <img src="../Recursos/logo.png" width="120px" height="80px" alt="">
+            <section>
+                <a href=""><img id="logo" src="../Recursos/Elmuelle2.png" width="120px" height="80px" alt=""></a>
+                <a href=""><img id="perfil" src="../Recursos/perfil.png" width="25px" height="25px" alt=""></a>
+
+                <section class="perfil">
+                    <ul class="submenu">
+                        <li><a href="#">Editar Usuario</a></li>
+                        <li><a href="./LogOut.php">Cerrar Sesion</a></li>
+                    </ul>
+                </section>
+            </section>
+
             <nav>
                 <ul>
                     <li class="categoria">
@@ -42,11 +52,39 @@
                 </ul>
             </nav>
         </header>
-        <!-- Barra de navegación -->        
 
-        
-        <!--  ELEMENTO DIV DE PIE DE PAGINA -->
-        <footer>Curso Cefire: Introducción a los precompiladores CSS: Sass + Compass</footer>
-    </body>
-</html>
+<?php
+
+} else {
+    if(strcmp($u->get_rol(),"Alumno")==0){
+?>
+        <header>
+        <section>
+                <a href=""><img id="logo" src="../Recursos/Elmuelle2.png" width="120px" height="80px" alt=""></a>
+                <a href=""><img id="perfil" src="../Recursos/perfil.png" width="25px" height="25px" alt=""></a>
+
+                <section class="perfil">
+                    <ul class="submenu">
+                        <li><a href="#">Editar Usuario</a></li>
+                        <li><a href="./LogOut.php">Cerrar Sesion</a></li>
+                    </ul>
+                </section>
+            </section>
+
+            <nav>
+                <ul>
+                    <li class="categoria"><a href="#">Historico Examenes</a>
+                    </li>
+                    <li class="categoria"><a href="#">Examen aleatorio</a>
+                    </li>
+                    <li class="categoria"><a href="listadoExamenes.php">Examenes</a>
+                    </li>
+
+                </ul>
+            </nav>
+        </header>
+<?php
+    }
+}
+?>
 

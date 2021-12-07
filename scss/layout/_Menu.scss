@@ -8,35 +8,43 @@
         @include set_colores_hover;
     }
 }
+
+img#logo{
+    margin-left: 50px;
+    margin-top: 10px;
+    width:120px;
+    height:80px;
+}
+
+img#perfil{
+    margin-right: 50px;
+    margin-top: 20px;
+    float: right;
+    width:25px;
+    height:25px;
+}
+section.perfil{
+    margin-top: 50px;
+    margin-right: 0px;
+}
 header{
-    nav {
-        margin-left: 70px;
-        margin-top: 50px;
-        position: absolute;
-        width: 65%;
-        font-family: Arial, Helvetica, sans-serif;
-        ul {
-            list-style-type: none;
-            padding: 0px;
-            margin: 0px;
-            border-radius: 10px;
-            .submenu {
-                @include transicion(height,0.5s,ease-out);
-                position: absolute;
-                height: 0px;
-                overflow: hidden;
-            }
+    font-family: Arial, Helvetica, sans-serif;
+    height: 200px;
+    ul {
+        list-style-type: none;
+        padding: 0px;
+        margin: 0px;
+        border-radius: 10px;
+        .submenu {
+            @include transicion(height,0.5s,ease-out);
+            position: absolute;
+            height: 0px;
+            overflow: hidden;
         }
-        >ul {
-            width: 100%;
-            height: 32px;
-        }
-
-
         a {
             @include set_colores_normales;
             text-decoration: none;
-            width: 160px;
+            width: 150px;
             padding: 7px 0px;
             display: block;
             text-align: center;
@@ -49,21 +57,45 @@ header{
             @include animacion(iluminar,0.4s,linear);
         }
     }
+    >ul {
+        width: 100%;
+        height: 32px;
+    }
+    nav {
+        margin-left: 60px;
+        margin-top: 40px;
+        position: absolute;
+        width: 65%;
+    }
 
-
-        .categoria {
-            float: left;
-        }
-        .categoria>a{
-            @include transicion (padding,0.4s,ease-out);
-        }
-        .categoria:hover>a {
-            padding: 10px 20px;
-        }
-        .categoria:hover{
+    .perfil{
+        float: right;
+    }
+    .perfil>a{
+        @include transicion (padding,0.4s,ease-out);
+    }
+    .perfil:hover>a {
+        padding: 10px 20px;
+    }
+    .perfil:hover{
+        height: 100px;
+        ul.submenu {
             height: 100px;
-            ul.submenu {
-                height: 100px;
-            }
         }
+    }
+    .categoria {
+        float: left;
+    }
+    .categoria>a{
+        @include transicion (padding,0.4s,ease-out);
+    }
+    .categoria:hover>a {
+        padding: 10px 20px;
+    }
+    .categoria:hover{
+        height: 100px;
+        ul.submenu {
+            height: 100px;
+        }
+    }
 }
