@@ -49,15 +49,18 @@ window.addEventListener("load",function(){
     }
 
     btnGuardar.onclick=function(){
-        preguntas = ObtienePreguntas();
+        var preguntas = ObtienePreguntas();
         var data = new FormData();
-        fetch("Examen_Preguntas.js",{
-            method:"POST"
-        }).then(response => response.json())
-          .catch(error=>console.error("Error","error"))
-          .then(response=> {
-            crearContenido(response);
-          })
+        data.append("preguntas",preguntas);
+        fetch("../Include/Examen_Pregunta.php",{
+            method:"POST",
+            body:data
+        })
+            .then(response => response.json())
+            .catch(error=>console.log("Error",error))
+            .then(response=> {
+                ObtienePreguntas(response);
+            })
     }
 
     filtro.onkeyup=function(){
@@ -131,7 +134,7 @@ window.addEventListener("load",function(){
         var preguntas = Caja_Preguntas_Examen.children;
         var ids = [];
         for(let i=0;i<preguntas.length;i++){
-            var id = preguntas.getAttribute("id").substr(9);
+            var id = preguntas[i].getAttribute("id").substr(8);
             ids.push(id);
             return ids;
         }

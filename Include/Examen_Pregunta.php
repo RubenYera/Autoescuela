@@ -16,12 +16,12 @@
 
         <div id="Caja_Preguntas_Examen"></div>
         <input type="button" value="Guardar" name="Guardar" id="Guardar">
+        <input type="submit" value="Enviar">
     </form>
     
 </body>
 </html>
 <?php
     require_once("./BD.php");
-    $preguntas = array();
-
+    // var_dump($_POST);
 ?>
