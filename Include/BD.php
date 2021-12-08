@@ -94,8 +94,27 @@ require_once('../Class/Pregunta.php');
             return $tematicas;   
         }
 
-        public static function altaExamen($examen,$preguntas){
-            $consulta = self::$con->prepare("Insert into examen")
+        public static function altaExamen($examen){
+            $consulta = self::$con->prepare("Insert into examen (Descripcion, Duracion, NPreguntas, Activo) values(:Descripcion, :Duracion, :NPreguntas, :Activo)");
+            $Descripcion = $examen->get_descripcion;
+            $Duracion = $examen->get_duracion;
+            $NPreguntas = $examen->get_nPreguntas;
+            $Activo = $examen->get_activo;
+            $consulta->bindParam(":Descripcion",$Descripcion);
+            $consulta->bindParam(":Duracion",$Duracion);
+            $consulta->bindParam(":NPreguntas",$NPreguntas);
+            $consulta->bindParam(":Activo",$Activo);
+            $consulta->execute();
+        }
+
+        public static function altaExamen_Pregunta($examen,$pregunta){
+            $consulta = self::$con->prepare("Insert into examen_pregunta (ID_Examen,ID_Pregunta) values(:ID_Examen, :ID_Pregunta)");
+            $ID_Examen = $examen->get_id;
+            $ID_Pregunta = $pregunta->get_id;
+
+            $consulta->bindParam(":ID_Examen",$Descripcion);
+            $consulta->bindParam(":ID_Pregunta",$Duracion);
+            $consulta->execute();
         }
         
         public static function altaPregunta($pregunta){

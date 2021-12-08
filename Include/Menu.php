@@ -60,9 +60,8 @@
 ?>
         <header>
         <section>
-                <a href=""><img id="logo" src="../Recursos/Elmuelle2.png" width="120px" height="80px" alt=""></a>
+                <a href=""><img id="logo" src="../Recursos/logo.png" width="120px" height="80px" alt=""></a>
                 <a href=""><img id="perfil" src="../Recursos/perfil.png" width="25px" height="25px" alt=""></a>
-
                 <section class="perfil">
                     <ul class="submenu">
                         <li><a href="#">Editar Usuario</a></li>

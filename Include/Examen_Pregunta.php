@@ -25,7 +25,3 @@
     
 </body>
 </html>
-<?php
-    require_once("./BD.php");
-    var_dump($_SESSION);
-?>
