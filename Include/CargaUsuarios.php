@@ -1,7 +1,7 @@
 <?php
     require_once("./BD.php");
     BD::creaConexion();
-    $preguntas = BD::leePreguntas();
-    $json = json_encode($preguntas);
+    $usuarios = BD::leeUsuarios();
+    $json = json_encode($usuarios);
     echo $json;
 ?>

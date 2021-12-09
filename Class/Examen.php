@@ -1,5 +1,5 @@
 <?php
-    class Examen{
+    class Examen implements jsonSerializable{
         private $id;
         private $descripcion;
         private $duracion;
@@ -46,6 +46,13 @@
         }
         public function set_activo($activo){
             $this->activo=$activo;
+        }
+
+        public function jsonSerialize(){
+
+            $vars = get_object_vars($this);
+
+            return $vars;
         }
     }
 ?>

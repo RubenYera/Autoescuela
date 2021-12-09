@@ -102,8 +102,8 @@ window.addEventListener("load",function(){
         fetch("CargaPreguntas.php",{
             method:"POST"
         }).then(response => response.json())
-          .catch(error=>console.error("Error","error"))
-          .then(response=> {
+          .catch(error=>console.error("Error",error))
+          .then(response => {
             crearContenido(response);
           })
         // const ajax = new XMLHttpRequest();

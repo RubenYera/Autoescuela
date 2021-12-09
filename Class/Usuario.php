@@ -1,5 +1,5 @@
 <?php
-    class Usuario {
+    class Usuario implements jsonSerializable{
         private $id;
         private $email;
         private $nombre;
@@ -92,6 +92,28 @@
         public function set_activo($activo){
             $this->activo=$activo;
         }
+
+        public function jsonSerialize(){
+
+            $vars = get_object_vars($this);
+
+            return $vars;
+        }
+
+        // public function jsonSerialize(){
+        //     $k = 1;
+        //     return [
+        //         'id' => $this->id,
+        //         'email' => $this->email,
+        //         'nombre' => $this->nombre,
+        //         'apellidos' => $this->apellidos,
+        //         'password' => $this->password,
+        //         'fechaNac' => $this->fechaNac,
+        //         'rol' => $this->rol,
+        //         'foto' => $this->foto,
+        //         'activo' => $this->activo
+        //     ];
+        // }
 
     }
 ?>

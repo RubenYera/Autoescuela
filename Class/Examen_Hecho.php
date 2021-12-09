@@ -1,5 +1,5 @@
 <?php
-    class Examen_Hecho{
+    class Examen_Hecho implements jsonSerializable{
         private $id;
         private $Examen;
         private $Alumno;
@@ -56,6 +56,13 @@
         }
         public function set_ejecucion($ejecucion){
             $this->ejecucion=$ejecucion;
+        }
+
+        public function jsonSerialize(){
+
+            $vars = get_object_vars($this);
+
+            return $vars;
         }
     }
 ?>

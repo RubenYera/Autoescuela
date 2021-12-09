@@ -47,6 +47,7 @@ section.perfil {
 header {
   font-family: Arial, Helvetica, sans-serif;
   height: 200px;
+  margin-bottom: 60px;
 }
 header ul {
   list-style-type: none;
@@ -116,4 +117,25 @@ header .categoria:hover {
 }
 header .categoria:hover ul.submenu {
   height: 100px;
+}
+
+table {
+  border: 1px solid black;
+  border-spacing: 0;
+  width: 1250px;
+  height: 300px;
+  margin-left: 50px;
+}
+table td {
+  border: 1px solid black;
+  text-align: center;
+}
+table th {
+  border: 1px solid black;
+  color: #eee;
+  background-color: #82C073;
+}
+table th:hover {
+  color: #fff;
+  background-color: #a6eb95;
 }/*# sourceMappingURL=main.css.map */

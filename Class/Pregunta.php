@@ -55,10 +55,9 @@
         }
 
         public function jsonSerialize(){
-            return[
-            'id' => $this->id,
-            'enunciado' => $this->enunciado,
-            'recurso' => $this->recurso,
-            'Tematica' => $this->Tematica];
+
+            $vars = get_object_vars($this);
+
+            return $vars;
         }
     }

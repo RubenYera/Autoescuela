@@ -8,6 +8,29 @@ require_once('../Class/Pregunta.php');
 
         public static function creaConexion(){
             self::$con = new PDO('mysql:host=localhost;dbname=autoescuela', 'root', '');
+            self::$con->query("set names UTF8");
+        }
+
+        public static function leeUsuarios(){
+            $resultado = self::$con->query("Select * from usuario");
+            $usuarios = array();
+            while ($consulta = $resultado->fetch()) {
+                $id = $consulta['ID'];
+                $email = $consulta['Email'];
+                $nombre = $consulta['Nombre'];
+                $apellidos = $consulta['Apellidos'];
+                $password = $consulta['Password'];
+                $fechaNac = $consulta['FechaNac'];
+                $rol = $consulta['Rol'];
+                $foto = $consulta['Foto'];
+                $activo = $consulta['Activo'];
+
+                $u = new Usuario($email,$nombre,$apellidos,$password,$fechaNac,$rol,$foto,$activo);
+                $u-> set_id($id);
+                $usuarios[] = $u;
+                }
+                return $usuarios;   
+
         }
 
         public static function obtieneUser($email){

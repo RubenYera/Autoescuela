@@ -23,10 +23,10 @@
         }
 
         public function jsonSerialize(){
-            return [
-                'id' => $this->id,
-                'nombre' => $this->nombre
-            ];
+
+            $vars = get_object_vars($this);
+
+            return $vars;
         }
     }
 ?>

@@ -9,7 +9,7 @@
 ?>
         <header>
             <section>
-                <a href=""><img id="logo" src="../Recursos/Elmuelle2.png" width="120px" height="80px" alt=""></a>
+                <a href=""><img id="logo" src="../Recursos/logo.png" width="120px" height="80px" alt=""></a>
                 <a href=""><img id="perfil" src="../Recursos/perfil.png" width="25px" height="25px" alt=""></a>
 
                 <section class="perfil">
@@ -23,7 +23,7 @@
             <nav>
                 <ul>
                     <li class="categoria">
-                        <a href="#">Usuarios</a>
+                        <a href="lista_Usuario.php">Usuarios</a>
                         <ul class="submenu">
                             <li><a href="#">Alta Usuario</a></li>
                             <li><a href="#">Alta masiva usuarios</a></li>
@@ -36,7 +36,7 @@
                         </ul>
                     </li>
                     <li class="categoria">
-                        <a href="#">Preguntas</a>
+                        <a href="lista_Preguntas.php">Preguntas</a>
                         <ul class="submenu">
                             <li><a href="#">Alta Pregunta</a></li>
                             <li><a href="#">Alta Masiva Preguntas</a></li>
@@ -45,7 +45,7 @@
                     <li class="categoria">
                         <a href="#">Exámenes</a>
                         <ul class="submenu">
-                            <li><a href="#">Alta Examen</a></li>
+                            <li><a href="Examen_Pregunta.php">Alta Examen</a></li>
                             <li><a href="#">Historico</a></li>
                         </ul>
                     </li>

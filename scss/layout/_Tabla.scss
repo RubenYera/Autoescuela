@@ -1,0 +1,21 @@
+@import '../base/variables';
+@import '../base/funciones';
+
+table {
+    border: 1px solid black;
+    border-spacing: 0;
+    width: 1250px;
+    height: 300px;
+    margin-left: 50px;
+    td {
+        border: 1px solid black;
+        text-align: center;
+    }
+    th {
+        border: 1px solid black;
+        @include set_colores_normales;
+    }
+    th:hover {
+        @include set_colores_hover;
+    }
+}

@@ -1,5 +1,5 @@
 <?php
-    class Respuesta{
+    class Respuesta implements jsonSerializable{
         private $id;
         private $enunciado;
         private $pregunta;
@@ -28,6 +28,13 @@
         }
         public function set_pregunta($pregunta){
             $this->pregunta=$pregunta;
+        }
+
+        public function jsonSerialize(){
+
+            $vars = get_object_vars($this);
+
+            return $vars;
         }
 
     }
