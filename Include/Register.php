@@ -52,9 +52,7 @@
         if($errores==0){
             $u = new Usuario($email,$nombre,$apellidos,$password,$fecha,$rol);
             BD::altaUser($u);
-            Session::iniciar();
-            Session::escribir('Usuario',BD::obtieneUser($email));
-            header("Location: Examen_Pregunta.php");
+            header("Location: LoginForm.php");
             //var_dump($u);
         }
         

@@ -25,12 +25,12 @@
                     <li class="categoria">
                         <a href="lista_Usuario.php">Usuarios</a>
                         <ul class="submenu">
-                            <li><a href="#">Alta Usuario</a></li>
+                            <li><a href="Register.php">Alta Usuario</a></li>
                             <li><a href="#">Alta masiva usuarios</a></li>
                         </ul>
                     </li>
                     <li class="categoria">
-                        <a href="#">Temáticas</a>
+                        <a href="lista_Tematica">Temáticas</a>
                         <ul class="submenu">
                             <li><a href="#">Alta Temática</a></li>
                         </ul>

@@ -2,8 +2,8 @@
     require_once("./BD.php");
     require_once("./Funciones.php");
     BD::creaConexion();
-    $columnas = array("Alumno/a","Correo","Rol", "Activado", "Acciones");
-    $registros = BD::obtienefilas("usuario");
+    $columnas = array("Temática", "Acciones");
+    $registros = BD::obtienefilas("tematica");
     $aux = round($registros/4,0,PHP_ROUND_HALF_DOWN);
     if(isset($_GET['pag'])){
         $pag = $_GET['pag'];
@@ -39,16 +39,16 @@
 <body>
     <?php require_once("./Menu.php");?>
     <section id="contenedor" name="contenedor" class="contenedor">
-        <h1>Listado de Usuarios</h1>
+        <h1>Listado de Temáticas</h1>
 <?php
-    $tabla = Funciones::pintaTablaUsuarios($columnas,$total,4);
+    $tabla = Funciones::pintaTablaTematicas($columnas,$total,4);
     echo $tabla;
 
     $enlace = '<p class="paginador">';
 
-    $enlace.= "<a href='lista_Usuario.php?pag=0'>&lt;&lt;</a>";
+    $enlace.= "<a href='lista_Tematica.php?pag=0'>&lt;&lt;</a>";
 
-    $enlace.= "<a href='lista_Usuario.php?pag=$menos1'>&lt;</a>";
+    $enlace.= "<a href='lista_Tematica.php?pag=$menos1'>&lt;</a>";
 
     for($i=0; $i<=$aux;$i++){
         if($pag == $i){
@@ -56,12 +56,12 @@
         } else {
             $activo = "noActivo";
         }
-        $enlace.="<a class='$activo' href='lista_Usuario.php?pag=$i'>$i</a>";
+        $enlace.="<a class='$activo' href='lista_Tematica.php?pag=$i'>$i</a>";
     }
 
-    $enlace.= "<a href='lista_Usuario.php?pag=$mas1'>&gt;</a>";
+    $enlace.= "<a href='lista_Tematica.php?pag=$mas1'>&gt;</a>";
 
-    $enlace.= "<a href='lista_Usuario.php?pag=$aux'>&gt;&gt;</a>";
+    $enlace.= "<a href='lista_Tematica.php?pag=$aux'>&gt;&gt;</a>";
 
     $enlace.= '</p>';
 ?>

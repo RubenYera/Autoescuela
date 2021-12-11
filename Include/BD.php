@@ -230,6 +230,23 @@ require_once('../Class/Pregunta.php');
             $consulta->execute();  
         }
 
+        public static function obtieneTablaJSON($t,$pag, $limit){    
+            $res = self::$con->query("Select * from $t limit $limit offset $pag");
+    
+            if($res!=null){
+                $filas = $res->fetchAll(PDO::FETCH_ASSOC);
+                return json_encode($filas);
+            }
+        }
+
+        public static function obtieneFilas($tabla){    
+            $res = self::$con->query("SELECT count(*) FROM $tabla");
+    
+            if($res != false){
+                $registro = $res->fetchColumn();
+                return (int)$registro;
+            }
+        }
     
     }
 ?>
