@@ -12,7 +12,7 @@
                 <a href=""><img id="logo" src="../Recursos/logo.png" width="120px" height="80px" alt=""></a>
                 <a href=""><img id="perfil" src="../Recursos/perfil.png" width="25px" height="25px" alt=""></a>
 
-                <section class="perfil">
+                <section id="menuUsuario" class="oculto">
                     <ul class="submenu">
                         <li><a href="#">Editar Usuario</a></li>
                         <li><a href="./LogOut.php">Cerrar Sesion</a></li>
@@ -43,7 +43,7 @@
                         </ul>
                     </li>
                     <li class="categoria">
-                        <a href="#">Exámenes</a>
+                        <a href="listadoExamenes.php">Exámenes</a>
                         <ul class="submenu">
                             <li><a href="Examen_Pregunta.php">Alta Examen</a></li>
                             <li><a href="#">Historico</a></li>
@@ -62,7 +62,7 @@
         <section>
                 <a href=""><img id="logo" src="../Recursos/logo.png" width="120px" height="80px" alt=""></a>
                 <a href=""><img id="perfil" src="../Recursos/perfil.png" width="25px" height="25px" alt=""></a>
-                <section class="perfil">
+                <section id="menuUsuario" class="oculto">
                     <ul class="submenu">
                         <li><a href="#">Editar Usuario</a></li>
                         <li><a href="./LogOut.php">Cerrar Sesion</a></li>
@@ -76,7 +76,7 @@
                     </li>
                     <li class="categoria"><a href="#">Examen aleatorio</a>
                     </li>
-                    <li class="categoria"><a href="listadoExamenes.php">Examenes</a>
+                    <li class="categoria"><a href="#">Examenes</a>
                     </li>
 
                 </ul>

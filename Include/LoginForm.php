@@ -19,8 +19,7 @@
             </div>
             <div>
                 <input type="submit" name="Enviar" id="Enviar"><br><br>
-                <a href="">He olvidado mi contraseña.</a><br><br>
-                <a href="Register.php">Registrame.</a><br>
+                <a href="">He olvidado mi contraseña.</a>
             </div>
 
         </form>

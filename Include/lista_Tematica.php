@@ -33,11 +33,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <script src="../JS/listaUsuarios.js"></script> -->
+    <script src="../JS/menu.js"></script>
     <link rel="stylesheet" href="../css/main.css">
     <title>Document</title>
 </head>
 <body>
-    <?php require_once("./Menu.php");?>
+<?php require_once("./Menu.php");?>
+    <main>
+    
     <section id="contenedor" name="contenedor" class="contenedor">
         <h1>Listado de Temáticas</h1>
 <?php
@@ -68,5 +71,6 @@
     </section>
 
     <div><?php echo $enlace ?></div>
+    </main>
 </body>
 </html>

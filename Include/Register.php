@@ -65,13 +65,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../JS/menu.js"></script>
+    <link rel="stylesheet" href="../css/main.css">
     <title>Document</title>
 </head>
 <body>
-
-<?php echo $errores?>
 <div>
-        <h3>Registrar Usuario</h3>
+<?php require_once("./Menu.php");?>
+<main>
+        <h1>Registrar Usuario</h1>
         <form action="Register.php" name="form1" method="post">
             <div>
                 <p>Nombre: <input type="text" name="nombre" id="nombre"></p> 
@@ -100,5 +102,7 @@
 
         </form>
     </div>
+
+</main>
 </body>
 </html>
