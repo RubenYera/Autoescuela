@@ -22,7 +22,7 @@
         <div id="Caja_preguntas" ></div>
 
         <div id="Caja_Preguntas_Examen"></div>
-        <p><input type="button" value="Guardar" name="Guardar" id="Guardar"></p>
+        <p id="btnGuardar"><input type="button" value="Guardar" name="Guardar" id="Guardar"></p>
     </form>
     </main>
    
