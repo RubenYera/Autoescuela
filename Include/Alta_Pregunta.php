@@ -39,6 +39,7 @@
 
         </form>
 </main>
+<?php require_once("Footer.php"); ?>
 </body>
 </html>
 <?php

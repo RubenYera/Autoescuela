@@ -27,14 +27,20 @@ main {
     position: relative;
     z-index: 1;
 }
+footer {
+    margin-top: 150px;
+    position: relative; 
+}
 .oculto{
     display: none;
 }
 h1{
     margin-left: 50px;
 }
-#Guardar {
+#Guardar , #Registrar{
     @include set_colores_normales;
+}
+#Guardar {
     right: 200px;
     margin-top: -35px;
     position: absolute;
@@ -46,8 +52,19 @@ h1{
     @include set_colores_hover;
 }
 
+#Registrar {
+    margin-top: 35px;
+    margin-left: 180px;
+    position: absolute;
+}
+
+#Registrar:hover {
+    @include set_colores_hover;
+}
+
 input {
     border-radius: 20px;
+    vertical-align: top;
 }
 select {
     border-radius: 20px;
