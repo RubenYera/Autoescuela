@@ -18,10 +18,12 @@
     <form action="Examen_Pregunta.php" method="POST">
         <p>Descripcion <input type="text" name="Descripcion" id="Descripcion">&nbsp;&nbsp;Duración <input type="text" name="Duracion" id="Duracion"></p>
         <p>Filtrar Pregunta <input type="search" id="filtro" name="filtro"></p>
+        <section id="contenedor">
+            <div id="Caja_preguntas" ></div>
 
-        <div id="Caja_preguntas" ></div>
+            <div id="Caja_Preguntas_Examen"></div>
+        </section>
 
-        <div id="Caja_Preguntas_Examen"></div>
         <p id="btnGuardar"><input type="button" value="Guardar" name="Guardar" id="Guardar"></p>
     </form>
     </main>

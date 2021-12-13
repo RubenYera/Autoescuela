@@ -10,7 +10,11 @@ window.addEventListener("load",function(){
 
     for(let i=0;i<divs.length;i++){
         divs[i].onclick=function(){
-            divs[i].classList.add("marcado");
+            if(divs[i].classList.values.includes("oculto")){
+                divs[i].classList.remove("oculto");
+            }else{
+            divs[i].classList.add("oculto");
+            }
         }
     }
     

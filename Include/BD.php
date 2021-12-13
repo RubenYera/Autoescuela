@@ -117,6 +117,19 @@ require_once('../Class/Pregunta.php');
             return $tematicas;   
         }
 
+        public static function leeExamen(){
+            $resultado = self::$con->query("SELECT * FROM Examen");
+            $consulta = $resultado->fetch();
+            $id = $consulta['ID'];
+            $Descripcion = $consulta['Descripcion'];
+            $Duracion = $consulta['Duracion'];
+            $NPreguntas = $consulta['NPreguntas'];
+            $Activo = $consulta['Activo'];
+            $e = new Examen($Descripcion,$Duracion,$NPreguntas,$Activo);
+            $e-> set_id($id);
+            return $tematicas;   
+        }
+
         public static function altaExamen($examen){
             $consulta = self::$con->prepare("Insert into examen (Descripcion, Duracion, NPreguntas, Activo) values(:Descripcion, :Duracion, :NPreguntas, :Activo)");
             $Descripcion = $examen->get_descripcion;

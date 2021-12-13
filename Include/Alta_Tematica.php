@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
     <script src="../JS/menu.js"></script>
     <title>Document</title>
 </head>
 <body>
-<div>
+    <?php require_once("./Menu.php");?>
+    <div>
         <h1>Alta preguntas</h1>
         <form action="Alta_Tematica.php" name="form1" method="post">
             <div>

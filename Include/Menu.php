@@ -38,12 +38,12 @@
                     <li class="categoria">
                         <a href="lista_Preguntas.php">Preguntas</a>
                         <ul class="submenu">
-                            <li><a href="#">Alta Pregunta</a></li>
+                            <li><a href="alta_Pregunta.php">Alta Pregunta</a></li>
                             <li><a href="#">Alta Masiva Preguntas</a></li>
                         </ul>
                     </li>
                     <li class="categoria">
-                        <a href="listadoExamenes.php">Exámenes</a>
+                        <a href="lista_Examenes.php">Exámenes</a>
                         <ul class="submenu">
                             <li><a href="Examen_Pregunta.php">Alta Examen</a></li>
                             <li><a href="#">Historico</a></li>
