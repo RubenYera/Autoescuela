@@ -34,6 +34,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <script src="../JS/listaUsuarios.js"></script> -->
     <script src="../JS/menu.js"></script>
+    <script src="../JS/tabla.js"></script>
     <link rel="stylesheet" href="../css/main.css">
     <title>Document</title>
 </head>

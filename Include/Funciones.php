@@ -34,14 +34,14 @@ class Funciones{
     
         $usuarios = json_decode($json, true);
 
-        $tabla = '<table id="tabla" name="tabla" class="tabla"><tr>';
+        $tabla = '<table id="tabla" name="tabla" class="tabla"><thead><tr>';
 
         foreach($columnas as $i){
             $tabla.='<th>'.$i.'</th>';
 
         }
-        $tabla.='</tr>';
-
+        $tabla.='</tr></thead>';
+        $tabla.='<tbody>';
         foreach($usuarios as $i){
             $tabla.='<tr>';
             $tabla.='<td>'.$i['Nombre']." ".$i['Apellidos'].'</td>';
@@ -52,7 +52,8 @@ class Funciones{
             $tabla.='</tr>';
             }
 
-            $tabla.='</table>';
+        $tabla.='</tbody>';
+        $tabla.='</table>';
 
         return $tabla;
     }
