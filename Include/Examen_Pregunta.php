@@ -13,17 +13,16 @@
 
 <?php include ("./Menu.php");?>
     <main>
-    <h1>Alta Exámen</h1>
+    
     <form action="Examen_Pregunta.php" method="POST">
+    <h1>Alta Exámen</h1>
         <p>Descripcion <input type="text" name="Descripcion" id="Descripcion">&nbsp;&nbsp;Duración <input type="text" name="Duracion" id="Duracion"></p>
-        <p>Filtrar Pregunta <input type="search" id="filtro" name="filtro"></p>
-        <section id="contenedor">
+        <p>Filtrar Pregunta <input type="search" id="filtro" name="filtro"> <input type="button" value="Guardar" name="Guardar" id="Guardar"></p>
+        <section id="contenedor_preguntas_examen">
             <div id="Caja_preguntas" ></div>
 
             <div id="Caja_Preguntas_Examen"></div>
         </section>
-
-        <p id="btnGuardar"><input type="button" value="Guardar" name="Guardar" id="Guardar"></p>
     </form>
     </main>
     <?php require_once("Footer.php"); ?> 

@@ -11,8 +11,9 @@
 <body>
 <?php require_once("./Menu.php");?>
 <main>
-        <h1>Alta preguntas</h1>
+        
         <form action="Alta_Pregunta.php" name="form1" method="post">
+        <h1>Alta preguntas</h1>
             <div>
                 <p>Tematica:<select name="tematica">
                                 <option value="1">Señales</option> 

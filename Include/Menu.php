@@ -32,7 +32,7 @@
                     <li class="categoria">
                         <a href="lista_Tematica">Temáticas</a>
                         <ul class="submenu">
-                            <li><a href="#">Alta Temática</a></li>
+                            <li><a href="Alta_Tematica.php">Alta Temática</a></li>
                         </ul>
                     </li>
                     <li class="categoria">
@@ -74,7 +74,7 @@
                 <ul>
                     <li class="categoria"><a href="#">Historico Examenes</a>
                     </li>
-                    <li class="categoria"><a href="#">Examen aleatorio</a>
+                    <li class="categoria"><a href="./Hacer_Examen.php">Examen aleatorio</a>
                     </li>
                     <li class="categoria"><a href="#">Examenes</a>
                     </li>

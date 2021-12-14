@@ -10,9 +10,9 @@
 </head>
 <body>
     <?php require_once("./Menu.php");?>
-    <div>
-        <h1>Alta preguntas</h1>
+    <main>
         <form action="Alta_Tematica.php" name="form1" method="post">
+        <h1>Alta Temáticas</h1>
             <div>
                 <p>Descripcion: <input type="text" name="Descripcion" id="Descripcion"></p> 
             </div>
@@ -21,7 +21,8 @@
             </div>
 
         </form>
-    </div>
+    </main>
+
     <?php require_once("Footer.php"); ?>
 </body>
 </html>

@@ -74,8 +74,9 @@
 <div>
 <?php require_once("./Menu.php");?>
 <main>
-        <h1>Registrar Usuario</h1>
+        
         <form action="Register.php" name="form1" method="post">
+        <h1>Registrar Usuario</h1>
             <div>
                 <p>Nombre: <input type="text" name="nombre" id="nombre" class="campo"></p> 
             </div>
