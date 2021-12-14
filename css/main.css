@@ -222,4 +222,8 @@ main {
 #contenedor {
   margin-left: 15%;
   margin-right: 15%;
+}
+
+.Error {
+  border: 1px solid red;
 }/*# sourceMappingURL=main.css.map */

@@ -78,16 +78,16 @@
         <form action="Register.php" name="form1" method="post">
         <h1>Registrar Usuario</h1>
             <div>
-                <p>Nombre: <input type="text" name="nombre" id="nombre" class="campo"></p> 
+                <p>Nombre: <input type="text" name="nombre" id="nombre" class="campo letras"></p> 
             </div>
             <div>
-                <p>Apellidos: <input type="text" name="apellidos" id="apellidos" class="campo"></p> 
+                <p>Apellidos: <input type="text" name="apellidos" id="apellidos" class="campo letras"></p> 
             </div>
             <div>
-                <p>Correo: <input type="text" name="email" id="email" class="campo"></p> 
+                <p>Correo: <input type="text" name="email" id="email" class="campo email"></p> 
             </div>
             <div>
-                <p>Contraseña: <input type="password" name="password" id="password" class="campo"></p> 
+                <p>Contraseña: <input type="password" name="password" id="password" class="campo password"></p> 
             </div>
             <div>
                 <p>Fecha Nacimiento: <input type="date" name="fechaNac" id="fechaNac" class="campo"></p> 
