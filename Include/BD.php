@@ -86,6 +86,29 @@ require_once('../Class/Examen.php');
     
         }
 
+        public static function actualizaUsuario($u){
+            $email= $u->get_email();
+            $consulta = self::$con->prepare("Update usuario set `Nombre` = :Nombre, `Apellidos` = :Apellidos, `Password` = :Password, `FechaNac` = :FechaNac, `Rol` = :Rol, `Foto`  = :Foto, `Activo` = :Activo where `Email` = :Email");
+            $nombre=$u->get_nombre();
+            $apellidos=$u->get_apellidos();
+            $password=$u->get_password();
+            $fechaNac=$u->get_fechaNac();
+            $rol=$u->get_rol();
+            $foto=$u->get_foto();
+            $activo=$u->get_activo();
+            $email=$u->get_email();
+            $consulta->bindParam(":Nombre",$nombre);
+            $consulta->bindParam(":Apellidos",$apellidos);
+            $consulta->bindParam(":Password",$password);
+            $consulta->bindParam(":FechaNac",$fechaNac);
+            $consulta->bindParam(":Rol",$rol);
+            $consulta->bindParam(":Foto",$foto);
+            $consulta->bindParam(":Activo",$activo);
+            $consulta->bindParam(":Email",$email);
+            
+            $consulta->execute();
+        }
+
         public static function leeTematica($id){
             $resultado = self::$con->query("SELECT * FROM tematica WHERE ID='$id'");
             $consulta = $resultado->fetch();

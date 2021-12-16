@@ -49,7 +49,7 @@ require_once("BD.php");
                 }else{
                     Session::iniciar();
                     Session::escribir('Usuario',BD::obtieneUser($email));
-                    header("Location: Examen_Pregunta.php");
+                    header("Location: Principal.php");
                     // var_dump(BD::obtieneUser($email));
                 }
 

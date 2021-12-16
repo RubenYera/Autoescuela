@@ -10,11 +10,11 @@
         <header>
             <section>
                 <a href=""><img id="logo" src="../Recursos/logo.png" width="120px" height="80px" alt=""></a>
-                <a href=""><img id="perfil" src="../Recursos/perfil.png" width="25px" height="25px" alt=""></a>
+                <a href=""><img id="perfil" src="data:image/jpeg;base64,<?php echo $u->get_foto();?>" width="25px" height="25px" alt=""></a>
 
                 <section id="menuUsuario" class="oculto">
                     <ul class="submenu">
-                        <li><a href="#">Editar Usuario</a></li>
+                        <li><a href="./EditarUsuario.php">Editar Usuario</a></li>
                         <li><a href="./LogOut.php">Cerrar Sesion</a></li>
                     </ul>
                 </section>
@@ -61,10 +61,10 @@
         <header>
         <section>
                 <a href=""><img id="logo" src="../Recursos/logo.png" width="120px" height="80px" alt=""></a>
-                <a href=""><img id="perfil" src="../Recursos/perfil.png" width="25px" height="25px" alt=""></a>
+                <a href=""><img id="perfil" src="data:image/jpeg;base64,<?php echo $u->get_foto();?>" width="25px" height="25px" alt=""></a>
                 <section id="menuUsuario" class="oculto">
                     <ul class="submenu">
-                        <li><a href="#">Editar Usuario</a></li>
+                        <li><a href="./EditarUsuario.php">Editar Usuario</a></li>
                         <li><a href="./LogOut.php">Cerrar Sesion</a></li>
                     </ul>
                 </section>

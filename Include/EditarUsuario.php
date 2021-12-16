@@ -7,18 +7,38 @@
     $u = Session::leer('Usuario');
 
     if(isset($_POST['Enviar'])){
-        if(isset($_FILES['imagen'])){
-            //Recibimos los datos de la imagen
-            $nombre_imagen = "imgPerfil".$u->get_id();
-
-            //Ruta de la carpeta de destino
-            $carpeta=$_SERVER['DOCUMENT_ROOT'].'/'."Recursos".'/';
-
-            $a = $_FILES;
-
-            //Movemos la imagen de la carpeta temporal a la de destino
-            move_uploaded_file($_FILES['imagen']['tmp_name'],$carpeta.$nombre_imagen);
+        if($_POST['nombre']!=""){
+            $nombre = $_POST['nombre'];
+            $u->set_nombre($nombre);
         }
+        
+        if($_POST['apellidos']!=""){
+            $apellidos = $_POST['apellidos'];
+            $u->set_apellidos($apellidos);
+        }
+        
+        if($_POST['password']!=""){
+            $password = $_POST['password'];
+            $u->set_password($password);
+        }
+        
+
+        if($_POST['fechaNac']!=""){
+            $fechaNac = $_POST['fechaNac'];
+            $u->set_fechaNac($fechaNac);
+        }
+        
+
+        if(isset($_FILES['imagen'])){
+            //Codificamos la imagen y la mandamos a la base de datos
+            $imagen = file_get_contents($_FILES['imagen']['tmp_name']);
+            $imagen = base64_encode($imagen);
+
+            $u->set_foto($imagen);
+        }
+
+        BD::creaConexion();
+        BD::actualizaUsuario($u);
     }
 ?>
 <!DOCTYPE html>
@@ -27,6 +47,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../JS/menu.js"></script>
     <link rel="stylesheet" href="../css/main.css">
     <title>Document</title>
 </head>
@@ -34,7 +55,7 @@
 <?php require_once("./Menu.php");?>
 <main>
         
-        <form action="EditarUsuario.php" name="form1" method="post">
+        <form action="EditarUsuario.php" enctype="multipart/form-data" name="form1" method="post">
         <h1>Editar Usuario</h1>
             <div>
                 <p>Nombre: <input type="text" name="nombre" id="nombre" class="campo letras"></p> 
