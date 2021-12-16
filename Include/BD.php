@@ -2,6 +2,7 @@
 require_once('../Class/Usuario.php');
 require_once('../Class/Tematica.php');
 require_once('../Class/Pregunta.php');
+require_once('../Class/Respuesta.php');
 require_once('../Class/Examen.php');
     class BD{
 
@@ -118,8 +119,8 @@ require_once('../Class/Examen.php');
             return $tematicas;   
         }
 
-        public static function leeExamen(){
-            $resultado = self::$con->query("SELECT * FROM Examen");
+        public static function leeExamen($id){
+            $resultado = self::$con->query("SELECT * FROM Examen where id='$id'");
             $consulta = $resultado->fetch();
             $id = $consulta['ID'];
             $Descripcion = $consulta['Descripcion'];
@@ -129,6 +130,19 @@ require_once('../Class/Examen.php');
             $e = new Examen($Descripcion,$Duracion,$NPreguntas,$Activo);
             $e-> set_id($id);
             return $tematicas;   
+        }
+
+        public static function leeExamenDescripcion($Descripcion){
+            $resultado = self::$con->query("SELECT * FROM Examen where Descripcion='$Descripcion'");
+            $consulta = $resultado->fetch();
+            $id = $consulta['ID'];
+            $Descripcion = $consulta['Descripcion'];
+            $Duracion = $consulta['Duracion'];
+            $NPreguntas = $consulta['NPreguntas'];
+            $Activo = $consulta['Activo'];
+            $e = new Examen($Descripcion,$Duracion,$NPreguntas,$Activo);
+            $e-> set_id($id);
+            return $e;   
         }
 
         public static function altaExamen($examen){
@@ -149,9 +163,22 @@ require_once('../Class/Examen.php');
             $ID_Examen = $examen->get_id();
             $ID_Pregunta = $pregunta->get_id();
 
-            $consulta->bindParam(":ID_Examen",$Descripcion);
-            $consulta->bindParam(":ID_Pregunta",$Duracion);
+            $consulta->bindParam(":ID_Examen",$ID_Examen);
+            $consulta->bindParam(":ID_Pregunta",$ID_Pregunta);
             $consulta->execute();
+        }
+
+        public static function obtienePreguntasExamen($idExamen){
+            $preguntas = array();
+    
+            $resultado = self::$con->query("Select ID_Pregunta from examen_pregunta where id_examen=$idExamen");
+            while ($consulta = $resultado->fetch()) {
+                $id = $consulta['ID_Pregunta'];
+                $p = BD::leePregunta($id);
+                $preguntas[]=$p;
+            }
+            return $preguntas;
+    
         }
         
         public static function altaPregunta($pregunta){
@@ -223,6 +250,21 @@ require_once('../Class/Examen.php');
                 $preguntas[] = $p;
             }
             return $preguntas;
+        }
+
+        public static function leeRespuestaPregunta($id_pregunta){
+            $respuestas = array();
+            $resultado = self::$con->query("SELECT * FROM respuestas WHERE ID_Pregunta='$id_pregunta'");
+            while ($consulta = $resultado->fetch()) {
+            $id = $consulta['ID'];
+            $enunciado = $consulta['Enunciado'];
+            $pregunta = $consulta['ID_Pregunta'];
+            $pregunta = self::leePregunta($pregunta);
+            $r = new Respuesta($enunciado,$pregunta);
+            $r->set_id($id);
+            $respuestas[] = $r;
+            }
+            return $respuestas;   
         }
 
         public static function leeRespuestaEnunciado($enunciado){

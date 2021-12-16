@@ -1,4 +1,8 @@
 <?php
+    require_once("./Login.php");
+    if(!Login::usuarioLogeado()){
+        header("Location: LoginForm.php");  
+    }
     require_once('../Class/Usuario.php');
     require_once('BD.php');
     require_once('Session.php');

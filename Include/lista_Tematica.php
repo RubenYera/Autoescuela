@@ -1,10 +1,16 @@
 <?php
+    require_once("./Login.php");
+    if(!Login::usuarioLogeado()){
+        header("Location: LoginForm.php");  
+    }
     require_once("./BD.php");
     require_once("./Funciones.php");
     BD::creaConexion();
     $columnas = array("Temática", "Acciones");
     $registros = BD::obtienefilas("tematica");
     $aux = round($registros/4,0,PHP_ROUND_HALF_DOWN);
+    if($registros<=4)
+    $aux = 0;
     if(isset($_GET['pag'])){
         $pag = $_GET['pag'];
         if($pag>$aux){
@@ -16,6 +22,8 @@
             $menos1 = $pag;
         }
         $mas1 = $pag+1;
+        if($aux==0)
+        $mas1=0;
 
 
     } else {
@@ -59,7 +67,7 @@
         } else {
             $activo = "noActivo";
         }
-        $enlace.="<a class='$activo' href='lista_Tematica.php?pag=$i'>$i</a>";
+        $enlace.="<a class='$activo' href='lista_Tematica.php?pag=$i'>".($i+1)."</a>";
     }
 
     $enlace.= "<a href='lista_Tematica.php?pag=$mas1'>&gt;</a>";

@@ -11,8 +11,8 @@ require_once("../Class/Examen.php");
         BD::creaConexion();
         $examen = new Examen($descripcion,$duracion,count($id_preguntas));
         
-        BD::altaExamen($examen);
-        $examen = BD::leeExamen($descripcion);//para darle una id
+        // BD::altaExamen($examen);
+        $examen = BD::leeExamenDescripcion($descripcion);//para darle una id
 
         foreach($id_preguntas as $p){
             $pregunta = BD::leePregunta($p);

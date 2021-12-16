@@ -1,3 +1,11 @@
+<?php
+    require_once("./Login.php");
+    if(!Login::usuarioLogeado()){
+        header("Location: LoginForm.php");  
+    }
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

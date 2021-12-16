@@ -29,6 +29,35 @@ class Funciones{
         return $tabla;
     }
 
+    public static function pintaTablaExamenes($columnas, $pag, $limit){
+        $json = BD::obtieneTablaJSON("examen",$pag,$limit);
+    
+        $preguntas = json_decode($json, true);
+
+        $tabla = '<table id="tabla" name="tabla" class="tabla"><tr>';
+
+        foreach($columnas as $i){
+            $tabla.='<th>'.$i.'</th>';
+
+        }
+        $tabla.='</tr>';
+
+        foreach($preguntas as $i){
+            $tabla.='<tr>';
+            $tabla.='<td>'.$i['ID'].'</td>';
+            $tabla.='<td>'.$i['Descripcion'].'</td>';
+            $tabla.='<td>'.$i['Duracion'].'</td>';
+            $tabla.='<td>'.$i['NPreguntas'].'</td>';
+            $tabla.='<td>'.$i['Activo'].'</td>';
+            $tabla.='<td> <a>Editar Desactivar Borrar</a></td>';
+            $tabla.='</tr>';
+            }
+
+            $tabla.='</table>';
+
+        return $tabla;
+    }
+
     public static function pintaTablaUsuarios($columnas, $pag, $limit){
         $json = BD::obtieneTablaJSON("usuario",$pag,$limit);
     

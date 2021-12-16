@@ -27,6 +27,7 @@
 </body>
 </html>
 <?php
+require_once("Login.php");
 require_once("Session.php");
 require_once("../Class/Usuario.php");
 require_once("BD.php");
@@ -40,7 +41,7 @@ require_once("BD.php");
         if(empty($email) || empty($password)){
             $error = "Uno de los campos está vacio";
         }else{
-            if(BD::compruebaUser($email)){
+            if(Login::existeUsuario($email)){
                 $u = BD::obtieneUser($email);
                 $contrasenia=$u->get_password();
                 if(strcmp($contrasenia,$password)!=0){
