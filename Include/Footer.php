@@ -1,8 +1,9 @@
+<!-- Este es el footer que será cargado en cada página en forma de pie de página -->
 <footer>
     <hr>
     <section class="footers">
-        <p><a href="">Guia de estilo</a></p>
-        <p><a href="">Mapa web del sitio</a></p>
+        <p><a href="../recursos/GuiaEstilos.pdf">Guia de estilo</a></p>
+        <p><a href="./Mapa_Navegacion.html">Mapa web del sitio</a></p>
     </section>
     <section class="footers">
         <p><a href="https://www.dgt.es">DGT</a></p>

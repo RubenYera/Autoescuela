@@ -1,39 +1,51 @@
+//Esta función establece los colores principales
 @mixin set_colores_normales {
     color: $color_texto;
     background-color: $color_background;
 }
 
+//Esta función establece los colores segundarios
 @mixin set_colores_hover {
     color: $color_texto_hover;
     background-color: $color_background_hover;
 }
 
+//Esta función establece el tipo de letra del Menu
 @mixin set_Letra{
     font-family: $letra_Menu;
 }
 
+//Esta función establece el tipo de letra Principal
+@mixin set_Letra_Principal{
+    font-family: $letra_Principal;
+}
+
+//Esta función establece los colores inversos al Principal
 @mixin set_colores_inversos {
     color: $color_inverso_texto;
     background-color: $color_inverso_fondo;
 }
 
+//Esta función establece los colores inversos al Segundario
 @mixin set_colores_inversos_hover {
     color: $color_inverso_texto;
     background-color: $color_inverso_fondo_hover;
 }
 
-@mixin set_box-sizing($valor){
-    -webkit-box-sizing: $valor;
-    -moz-box-sizing: $valor;
-    box-sizing: $valor;
-}
+// @mixin set_box-sizing($valor){
+//     -webkit-box-sizing: $valor;
+//     -moz-box-sizing: $valor;
+//     box-sizing: $valor;
+// }
 
+//Esta función aplica una transición
 @mixin transicion($property,$duration,$timing:linear) {
     -webkit-transition:$property $duration $timing;
     -moz-transition:$property $duration $timing;
     transition:$property $duration $timing;
 }
 
+//Esta función aplica una animación
 @mixin animacion($name,$duration,$timing:linear) {
     -webkit-animation:$name $duration $timing;
     -moz-animation:$name $duration $timing;

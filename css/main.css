@@ -317,6 +317,9 @@ form.login a {
   color: white;
 }
 
+body {
+  font-family: Arial;
+}
 body h1 {
   font-family: "Permanent Marker";
   font-size: 2rem;

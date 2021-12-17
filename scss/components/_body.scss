@@ -1,4 +1,6 @@
 body {
+    @include set_Letra_Principal;
+    
     h1{
         @include set_Letra;
         font-size: 2rem;

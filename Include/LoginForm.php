@@ -6,12 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../JS/validator.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/main.css">
     <link  rel="icon"   href="../Recursos/logo.png" type="image/png" />
     <title>LoginForm</title>
 </head>
 <body>
+    
     <div>
+        <!-- Si existen te avisa -->
         <?php if(isset($error))echo $error?>
         <form action="LoginForm.php" name="form1" class="login" method="post">
             <div>

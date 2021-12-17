@@ -5,6 +5,7 @@
     Session::iniciar();
     $u = Session::leer('Usuario');
     
+    //Este menun se activará si el rol del usuario es Profesor
     if(strcmp($u->get_rol(),"Profesor")==0){
 ?>
         <header>
@@ -23,27 +24,27 @@
             <nav>
                 <ul>
                     <li class="categoria">
-                        <a href="lista_Usuario.php">Usuarios</a>
+                        <a href="lista_Usuario.php"><i class="far fa-address-book"></i> Usuarios</a>
                         <ul class="submenu">
                             <li><a href="Register.php">Alta Usuario</a></li>
                             <li><a href="#">Alta masiva usuarios</a></li>
                         </ul>
                     </li>
                     <li class="categoria">
-                        <a href="lista_Tematica">Temáticas</a>
+                        <a href="lista_Tematica"><i class="fas fa-asterisk"></i> Temáticas</a>
                         <ul class="submenu">
                             <li><a href="Alta_Tematica.php">Alta Temática</a></li>
                         </ul>
                     </li>
                     <li class="categoria">
-                        <a href="lista_Preguntas.php">Preguntas</a>
+                        <a href="lista_Preguntas.php"><i class="far fa-question-circle"></i> Preguntas</a>
                         <ul class="submenu">
                             <li><a href="alta_Pregunta.php">Alta Pregunta</a></li>
                             <li><a href="#">Alta Masiva Preguntas</a></li>
                         </ul>
                     </li>
                     <li class="categoria">
-                        <a href="lista_Examenes.php">Exámenes</a>
+                        <a href="lista_Examenes.php"><i class="far fa-edit"></i> Exámenes</a>
                         <ul class="submenu">
                             <li><a href="Examen_Pregunta.php">Alta Examen</a></li>
                             <li><a href="#">Historico</a></li>
@@ -55,6 +56,7 @@
 
 <?php
 
+    //Este menun se activará si el rol del usuario es Alumno.
 } else {
     if(strcmp($u->get_rol(),"Alumno")==0){
 ?>
