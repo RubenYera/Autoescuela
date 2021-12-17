@@ -8,6 +8,20 @@
     background-color: $color_background_hover;
 }
 
+@mixin set_Letra{
+    font-family: $letra_Menu;
+}
+
+@mixin set_colores_inversos {
+    color: $color_inverso_texto;
+    background-color: $color_inverso_fondo;
+}
+
+@mixin set_colores_inversos_hover {
+    color: $color_inverso_texto;
+    background-color: $color_inverso_fondo_hover;
+}
+
 @mixin set_box-sizing($valor){
     -webkit-box-sizing: $valor;
     -moz-box-sizing: $valor;

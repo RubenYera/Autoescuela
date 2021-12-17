@@ -6,18 +6,16 @@ window.addEventListener("load",function(){
     const Caja_Preguntas_Examen=document.getElementById("Caja_Preguntas_Examen");
     const divs=CajaPreguntas.children;
     const filtro=document.getElementById("filtro");
+    const filtro2 = document.getElementById("filtro2");
 
 
     for(let i=0;i<divs.length;i++){
         divs[i].onclick=function(){
-            if(divs[i].classList.values.includes("oculto")){
-                divs[i].classList.remove("oculto");
-            }else{
-            divs[i].classList.add("oculto");
-            }
+            divs[i].classList.toggle("oculto");
         }
     }
-    
+
+    //controlamos el arrastrar y soltar de las preguntas
     Caja_Preguntas_Examen.ondragstart=function(ev){
         ev.dataTransfer.setData("Text", ev.target.id);
     }
@@ -52,6 +50,7 @@ window.addEventListener("load",function(){
         }
     }
 
+    //mandamos el examen para guardarlo en la BD
     btnGuardar.onclick=function(){
         var preguntas = ObtienePreguntas();
         var data = new FormData();
@@ -75,11 +74,24 @@ window.addEventListener("load",function(){
             })
     }
 
+    //filtro de preguntas
     filtro.onkeyup=function(){
         const divs=CajaPreguntas.getElementsByTagName("div");
         for(let i=0;i<divs.length;i++){
             divs[i].classList.remove("marcado");
             if(divs[i].innerHTML.indexOf(filtro.value)<0)
+                divs[i].classList.add("oculto");
+            else
+                divs[i].classList.remove("oculto");
+         }
+    }
+
+    //filtro de preguntas del examen
+    filtro2.onkeyup=function(){
+        const divs=Caja_Preguntas_Examen.getElementsByTagName("div");
+        for(let i=0;i<divs.length;i++){
+            divs[i].classList.remove("marcado");
+            if(divs[i].innerHTML.indexOf(filtro2.value)<0)
                 divs[i].classList.add("oculto");
             else
                 divs[i].classList.remove("oculto");

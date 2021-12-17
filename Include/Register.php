@@ -16,7 +16,7 @@
         $nombre = $_POST['nombre'];
         $apellidos = $_POST['apellidos'];
         $email = $_POST['email'];
-        $password = $_POST['password'];
+        $password = $nombre."123";
         $fecha = $_POST['fechaNac'];
         $rol = $_POST['rol'];
         $foto = "iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAMAAADDpiTIAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAJukAACbpAG+CklmAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAwBQTFRF////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
@@ -24,7 +24,6 @@
         $campos[]=$nombre;
         $campos[]=$apellidos;
         $campos[]=$email;
-        $campos[]=$password;
         $campos[]=$fecha;
 
         foreach ($campos as $valor) {
@@ -36,9 +35,6 @@
         $errores+=1;
         
         if(!$validator->CadenaRango($apellidos,30))
-        $errores+=1;
-        
-        if(!$validator->CadenaRango($password,30))
         $errores+=1;
 
         if(!$validator->Email($email)){
@@ -70,6 +66,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link  rel="icon"   href="../Recursos/logo.png" type="image/png" />
     <script src="../JS/menu.js"></script>
     <script src="../JS/validator.js"></script>
     <link rel="stylesheet" href="../css/main.css">
@@ -90,9 +87,6 @@
             </div>
             <div>
                 <p>Correo: <input type="text" name="email" id="email" class="campo email"></p> 
-            </div>
-            <div>
-                <p>Contraseña: <input type="password" name="password" id="password" class="campo password"></p> 
             </div>
             <div>
                 <p>Fecha Nacimiento: <input type="date" name="fechaNac" id="fechaNac" class="campo"></p> 

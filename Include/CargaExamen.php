@@ -2,6 +2,8 @@
     require_once("./BD.php");
     BD::creaConexion();
     $ID_Examen = $_GET['ID_Examen'];
+    $examen = BD::leeExamen($ID_Examen);
+    
     $preguntas = BD::obtienePreguntasExamen($ID_Examen);
 
     for($i=0; $i<count($preguntas);$i++){

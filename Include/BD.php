@@ -143,7 +143,7 @@ require_once('../Class/Examen.php');
         }
 
         public static function leeExamen($id){
-            $resultado = self::$con->query("SELECT * FROM Examen where id='$id'");
+            $resultado = self::$con->query("SELECT * FROM examen where id='$id'");
             $consulta = $resultado->fetch();
             $id = $consulta['ID'];
             $Descripcion = $consulta['Descripcion'];
@@ -152,11 +152,11 @@ require_once('../Class/Examen.php');
             $Activo = $consulta['Activo'];
             $e = new Examen($Descripcion,$Duracion,$NPreguntas,$Activo);
             $e-> set_id($id);
-            return $tematicas;   
+            return $e;   
         }
 
         public static function leeExamenDescripcion($Descripcion){
-            $resultado = self::$con->query("SELECT * FROM Examen where Descripcion='$Descripcion'");
+            $resultado = self::$con->query("SELECT * FROM examen where Descripcion='$Descripcion'");
             $consulta = $resultado->fetch();
             $id = $consulta['ID'];
             $Descripcion = $consulta['Descripcion'];

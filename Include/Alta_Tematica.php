@@ -12,6 +12,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link  rel="icon"   href="../Recursos/logo.png" type="image/png" />
     <link rel="stylesheet" href="../css/main.css">
     <script src="../JS/menu.js"></script>
     <title>Document</title>
@@ -19,7 +20,7 @@
 <body>
     <?php require_once("./Menu.php");?>
     <main>
-        <form action="Alta_Tematica.php" name="form1" method="post">
+        <form action="Alta_Tematica.php" name="form1" class="alta" method="post">
         <h1>Alta Temáticas</h1>
             <div>
                 <p>Descripcion: <input type="text" name="Descripcion" id="Descripcion"></p> 

@@ -5,12 +5,15 @@ table {
     border: 1px solid black;
     border-spacing: 0;
     width: 100%;
+    margin-top: 25px;
     td {
+        line-height: 50px;
         border: 1px solid black;
         text-align: center;
         height: 60px;
     }
     th {
+        line-height: 50px;
         border: 1px solid black;
         @include set_colores_normales;
         height: 60px;

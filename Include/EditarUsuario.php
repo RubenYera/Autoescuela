@@ -47,6 +47,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link  rel="icon"   href="../Recursos/logo.png" type="image/png" />
     <script src="../JS/menu.js"></script>
     <link rel="stylesheet" href="../css/main.css">
     <title>Document</title>
@@ -55,7 +56,7 @@
 <?php require_once("./Menu.php");?>
 <main>
         
-        <form action="EditarUsuario.php" enctype="multipart/form-data" name="form1" method="post">
+        <form action="EditarUsuario.php" enctype="multipart/form-data" class="alta" name="form1" method="post">
         <h1>Editar Usuario</h1>
             <div>
                 <p>Nombre: <input type="text" name="nombre" id="nombre" class="campo letras"></p> 
