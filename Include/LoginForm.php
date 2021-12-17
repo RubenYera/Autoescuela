@@ -15,6 +15,9 @@
         <?php if(isset($error))echo $error?>
         <form action="LoginForm.php" name="form1" class="login" method="post">
             <div>
+                <img src="../recursos/logo.png" alt="">
+            </div>
+            <div>
                 <p>Correo: <input type="text" name="email" id="email"></p>
             </div>
             <div>

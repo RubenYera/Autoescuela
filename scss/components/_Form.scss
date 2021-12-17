@@ -30,7 +30,7 @@ form {
         width: 180px;
     }
 
-    input {
+    input:not([type="file"]){
         border-radius:7px;
         margin: 8px 0;
     }
@@ -39,6 +39,12 @@ form {
         border-radius: 8px;
         @include set_colores_normales;
     }
+
+    p#preguntas, p#preguntas_examen{
+        display: inline-block;
+        width: 40%;
+    }
+
 }
 
 
@@ -68,26 +74,4 @@ div#Caja_Preguntas_Examen{
 
 div.pregunta{position:relative;height:50px;border:1px solid;background-color:beige}
 
-h1{
-    @include set_Letra;
-    font-size: 2rem;
-}
-main {
-    padding-top: 135px;
-    position: relative;
-    z-index: 1;
-}
-
-.oculto{
-    display: none;
-}
-
-#contenedor {
-    margin-left: 15%;
-    margin-right: 15%;
-}
-
-.Error {
-    border: 1px solid red;
-}
 

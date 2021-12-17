@@ -3,8 +3,11 @@ window.addEventListener("load",function(){
     const main = document.getElementById("main");
     const paginador = document.createElement("section");
     paginador.id="paginador";
+    paginador.className="paginador";
     var examen = document.createElement("section");
     examen.id="examen";
+
+    var ID_Examen = document.getElementById("ID_Examen").value;
 
     botonesPreguntas = document.getElementsByClassName("botonPaginador");
 
@@ -17,7 +20,7 @@ window.addEventListener("load",function(){
     btnSiguiente.innerHTML="Siguiente";
 
     //peticion de las preguntas del examen
-    fetch("CargaExamen.php?ID_Examen=2")
+    fetch("CargaExamen.php?ID_Examen="+ID_Examen)
     .then(response => response.json())
     .then(response => {
         

@@ -1,0 +1,29 @@
+body {
+    h1{
+        @include set_Letra;
+        font-size: 2rem;
+    }
+    main {
+        padding-top: 135px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .oculto{
+        display: none;
+    }
+    
+    #contenedor {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+    
+    .Error {
+        border: 1px solid red;
+    }
+    img#principal{
+        margin-top: 50px;
+        margin-left: 400px;
+        width: 600px;
+    }
+}

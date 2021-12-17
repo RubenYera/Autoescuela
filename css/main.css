@@ -214,7 +214,7 @@ form #Enviar {
 form input:not([type=submit]) {
   width: 180px;
 }
-form input {
+form input:not([type=file]) {
   border-radius: 7px;
   margin: 8px 0;
 }
@@ -223,6 +223,10 @@ form select {
   border-radius: 8px;
   color: #eee;
   background-color: #155db1;
+}
+form p#preguntas, form p#preguntas_examen {
+  display: inline-block;
+  width: 40%;
 }
 
 #contenedor_preguntas_examen {
@@ -257,30 +261,6 @@ div.pregunta {
   background-color: beige;
 }
 
-h1 {
-  font-family: "Permanent Marker";
-  font-size: 2rem;
-}
-
-main {
-  padding-top: 135px;
-  position: relative;
-  z-index: 1;
-}
-
-.oculto {
-  display: none;
-}
-
-#contenedor {
-  margin-left: 15%;
-  margin-right: 15%;
-}
-
-.Error {
-  border: 1px solid red;
-}
-
 .paginador {
   margin-top: 30px;
   text-align: center;
@@ -295,6 +275,17 @@ main {
   border: 1px solid #ddd;
   background-color: white;
 }
+.paginador button {
+  padding: 8px 16px;
+  text-decoration: none;
+  color: black;
+  border: 1px solid #ddd;
+  background-color: white;
+}
+.paginador button.actual {
+  color: #eee;
+  background-color: #155db1;
+}
 .paginador a.activo {
   color: #eee;
   background-color: #155db1;
@@ -305,11 +296,14 @@ main {
 
 form.login {
   margin-top: 150px;
-  padding-top: 10%;
-  padding-bottom: 0;
-  height: 300px;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  height: 200px;
   color: #eee;
   background-color: #155db1;
+}
+form.login img {
+  width: 200px;
 }
 form.login input[type=submit] {
   color: #155db1;
@@ -321,4 +315,37 @@ form.login input[type=submit]:hover {
 }
 form.login a {
   color: white;
+}
+
+body h1 {
+  font-family: "Permanent Marker";
+  font-size: 2rem;
+}
+body main {
+  padding-top: 135px;
+  position: relative;
+  z-index: 1;
+}
+body .oculto {
+  display: none;
+}
+body #contenedor {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+body .Error {
+  border: 1px solid red;
+}
+body img#principal {
+  margin-top: 50px;
+  margin-left: 400px;
+  width: 600px;
+}
+
+section#examen {
+  margin-top: 30px;
+  text-align: left;
+  font-size: 1.5em;
+  width: 50%;
+  margin-left: 40%;
 }/*# sourceMappingURL=main.css.map */

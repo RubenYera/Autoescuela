@@ -13,6 +13,18 @@
         background-color: white;
     }
 
+    button{
+        padding: 8px 16px;
+        text-decoration: none;
+        color: black;
+        border: 1px solid #ddd;
+        background-color: white;
+    }
+
+    button.actual{
+        @include set_colores_normales;
+    }
+
     a.activo {
         @include set_colores_normales;
     }

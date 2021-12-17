@@ -2,6 +2,7 @@ window.addEventListener("load",function(){
 
     const campos = document.getElementsByClassName("campo");//Todos los campos de un formulario
     const letras = document.getElementsByClassName("letras");//Campos en los que solo se puede escribir letras
+    const numeros = document.getElementsByClassName("numeros");//Campos en los que solo se puede escribir numeros
     const email = document.getElementsByClassName("email");//Campo de email
     const password = document.getElementsByClassName("password");//Campo de contraseña
     const btnEnviar = document.getElementById("Enviar");
@@ -28,6 +29,15 @@ window.addEventListener("load",function(){
             }
         }   
     }
+
+        //Solo deja escribir números
+        for(let i=0;i<numeros.length;i++){
+            numeros[i].onkeydown=function(evento){
+                if(isNaN(evento.key)&& evento.keyCode!=8){
+                    evento.preventDefault();
+                }
+            }   
+        }
 
     //Comprueba Si es un correo
     for(let i=0;i<email.length;i++){

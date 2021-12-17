@@ -15,6 +15,7 @@
     <link  rel="icon"   href="../Recursos/logo.png" type="image/png" />
     <script src="../JS/Examen_Preguntas.js"></script>
     <script src="../JS/menu.js"></script>
+    <script src="../JS/validator.js"></script>
     <link rel="stylesheet" href="../css/main.css">
     <title>Document</title>
 </head>
@@ -25,9 +26,9 @@
     
     <form action="Examen_Pregunta.php" method="POST">
     <h1>Alta Exámen</h1>
-        <p>Descripcion <input type="text" name="Descripcion" id="Descripcion">&nbsp;&nbsp;Duración <input type="text" name="Duracion" id="Duracion"></p>
-        <p>Filtrar Pregunta <input type="search" id="filtro" name="filtro"> <input type="button" value="Guardar" name="Guardar" id="Guardar"></p>
-        <p>Filtrar Pregunta Examen<input type="search" id="filtro2" name="filtro"></p>
+        <p>Descripcion <input type="text" name="Descripcion" id="Descripcion" class="campo">&nbsp;&nbsp;Duración <input type="text" name="Duracion" id="Duracion" class="campo numeros"></p>
+        <p id="preguntas">Filtrar Pregunta <input type="search" id="filtro" name="filtro"> <input type="button" value="Guardar" name="Guardar" id="Guardar"></p>
+        <p id="preguntas_examen">Filtrar Pregunta Examen<input type="search" id="filtro2" name="filtro"></p>
         <section id="contenedor_preguntas_examen">
             <div id="Caja_preguntas" ></div>
 

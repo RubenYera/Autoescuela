@@ -3,7 +3,7 @@
     if(!Login::usuarioLogeado()){
         header("Location: LoginForm.php");  
     }
-
+    $valor = $_GET['ID_Examen'];
 
 ?>
 <!DOCTYPE html>
@@ -13,6 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link  rel="icon"   href="../Recursos/logo.png" type="image/png" />
+    <script src="../JS/menu.js"></script>
     <script src="../JS/Examinar.js"></script>
     <link rel="stylesheet" href="../css/main.css">
     <title>Document</title>
@@ -20,6 +21,7 @@
 <body>
 <?php include ("./Menu.php");?>
 
+<input type="text" id="ID_Examen" value="<?php echo $valor; ?>">
 <main id="main">
 
 </main>

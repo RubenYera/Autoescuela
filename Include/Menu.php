@@ -9,7 +9,7 @@
 ?>
         <header>
             <section>
-                <a href=""><img id="logo" src="../Recursos/logo.png" width="120px" height="80px" alt=""></a>
+                <a href="./Principal.php"><img id="logo" src="../Recursos/logo.png" width="120px" height="80px" alt=""></a>
                 <a href=""><img id="perfil" src="data:image/jpeg;base64,<?php echo $u->get_foto();?>" width="25px" height="25px" alt=""></a>
 
                 <section id="menuUsuario" class="oculto">
@@ -60,7 +60,7 @@
 ?>
         <header>
         <section>
-                <a href=""><img id="logo" src="../Recursos/logo.png" width="120px" height="80px" alt=""></a>
+                <a href="./Principal.php"><img id="logo" src="../Recursos/logo.png" width="120px" height="80px" alt=""></a>
                 <a href=""><img id="perfil" src="data:image/jpeg;base64,<?php echo $u->get_foto();?>" width="25px" height="25px" alt=""></a>
                 <section id="menuUsuario" class="oculto">
                     <ul class="submenu">
@@ -74,9 +74,9 @@
                 <ul>
                     <li class="categoria"><a href="#">Historico Examenes</a>
                     </li>
-                    <li class="categoria"><a href="./Hacer_Examen.php">Examen aleatorio</a>
+                    <li class="categoria"><a href="./Examinar.php?ID_Examen=1">Examen aleatorio</a>
                     </li>
-                    <li class="categoria"><a href="#">Examenes</a>
+                    <li class="categoria"><a href="./lista_Examinar.php">Examenes</a>
                     </li>
 
                 </ul>

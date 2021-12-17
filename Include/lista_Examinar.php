@@ -6,7 +6,7 @@
     require_once("./BD.php");
     require_once("./Funciones.php");
     BD::creaConexion();
-    $columnas = array("Id","Descripción", "Duración","Nº Preguntas","Activado","Acciones");
+    $columnas = array("Descripción", "Nº Preguntas","Duración","Acciones");
     $registros = BD::obtienefilas("examen");
     $aux = round($registros/4,0,PHP_ROUND_HALF_DOWN);
     if($registros<=4)
@@ -52,15 +52,15 @@
     <section id="contenedor" name="contenedor" class="contenedor">
     <h1>Listado de Examenes</h1>
 <?php
-    $tabla = Funciones::pintaTablaExamenes($columnas,$total,4);
+    $tabla = Funciones::pintaTablaExaminar($columnas,$total,4);
     echo $tabla;
 
     $enlace = '<p class="paginador">';
     $act = "";
 
-    $enlace.= "<a href='lista_Examenes.php?pag=0'>&lt;&lt;</a>";
+    $enlace.= "<a href='lista_Examinar.php?pag=0'>&lt;&lt;</a>";
 
-    $enlace.= "<a href='lista_Examenes.php?pag=$menos1'>&lt;</a>";
+    $enlace.= "<a href='lista_Examinar.php?pag=$menos1'>&lt;</a>";
 
     for($i=0; $i<=$aux;$i++){
         if($pag == $i){
@@ -68,13 +68,13 @@
         } else {
             $act = "noActivo";
         }
-        $enlace.="<a class='$act' href='lista_Examenes.php?pag=$i'>".($i+1)."</a>";
+        $enlace.="<a class='$act' href='lista_Examinar.php?pag=$i'>".($i+1)."</a>";
     }
 
-    $enlace.= "<a href='lista_Examenes.php?pag=$mas1'>&gt;</a>";
+    $enlace.= "<a href='lista_Examinar.php?pag=$mas1'>&gt;</a>";
 
     $t = $aux-1;
-    $enlace.= "<a href='lista_Examenes.php?pag=$t'>&gt;&gt;</a>";
+    $enlace.= "<a href='lista_Examinar.php?pag=$t'>&gt;&gt;</a>";
 
     $enlace.= '</p>';
 ?>

@@ -6,7 +6,7 @@
         private $nPreguntas;
         private $activo;
 
-        public function __construct($descripcion,$duracion,$nPreguntas,$activo=0){
+        public function __construct($descripcion,$duracion,$nPreguntas,$activo=1){
             $this->descripcion=$descripcion;
             $this->duracion=$duracion;
             $this->nPreguntas=$nPreguntas;
