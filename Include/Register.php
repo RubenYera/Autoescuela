@@ -53,8 +53,21 @@
         if($errores==0){
             $u = new Usuario($email,$nombre,$apellidos,$password,$fecha,$rol,$foto);
             BD::altaUser($u);
-            header("Location: index.php");
-            //var_dump($u);
+
+            $html = '
+            <html>
+            <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <title>Credenciales</title>
+            </head>
+            <body>
+            <h2>Enlace para loguearse</h2>
+            <a href="localhost/autoescuela/Include/Principal.php">Pulse aqui para recuperar la contraseña</a>
+            </body>
+            </html>';
+
+            correo::enviar("ryermar659@g.educaand.es", "RubenYera.12", "Credenciales de Usuario", "Credenciales", $html, $u->email, "recursos/perfil.png");
+
         }
         
     }
