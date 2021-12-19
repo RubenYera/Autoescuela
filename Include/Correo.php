@@ -1,15 +1,15 @@
 <?php
 
 use PHPMailer\PHPMailer\PHPMailer;
-require "vendor/autoload.php";
+require "../vendor/autoload.php";
 
 class correo{
     private static $mail;
 
-    private static function estableceClase(){
+    private static function opcionesCorreo(){
         self::$mail = new PHPMailer();
         self::$mail->IsSMTP();
-        self::$mail->SMTPDebug  = 2;
+        self::$mail->SMTPDebug  = 0;
         self::$mail->SMTPAuth   = true;
         self::$mail->SMTPSecure = "tls";
         self::$mail->Host= "smtp.gmail.com";
@@ -17,30 +17,30 @@ class correo{
 
     }
 
-    public static function enviar($usuario, $password, $titulo, $asunto, $html, $direccion, $adjuntos = ""){
-        self::estableceClase();
+    public static function enviarCorreo($user, $password, $titulo, $asunto, $html, $direccion, $adjuntos = ""){
+        self::opcionesCorreo();
 
         // introducir usuario de google
-        self::$mail->Username   = $usuario;
+        self::$mail->Username   = $user;
         // introducir clave
         self::$mail->Password   = $password;
-        self::$mail->SetFrom($usuario, $titulo);
+        self::$mail->SetFrom($user, $titulo);
         // asunto
         self::$mail->Subject = $asunto;
         // cuerpo
         self::$mail->MsgHTML($html);
         // adjuntos
-        self::$mail->AddEmbeddedImage($adjuntos, 'archivo');// destinatario
-
+        self::$mail->AddEmbeddedImage($adjuntos, 'archivo');
+        // destinatario
         self::$mail->AddAddress($direccion, "Test");
         // enviar
         $resul = self::$mail->Send();
 
-        // if($resul) {
-        //     echo "Error" . self::$mail->ErrorInfo;
-        //     } else {
-        //     echo "Enviado";
-        // }
+        if($resul) {
+            echo "Error" . self::$mail->ErrorInfo;
+            } else {
+            echo "Enviado";
+        }
 
     }
 }

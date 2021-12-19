@@ -7,6 +7,7 @@
     require_once('BD.php');
     require_once('Session.php');
     require_once('validator.php');
+    require_once('Correo.php');
 
     BD::creaConexion();
     $errores=0;
@@ -41,7 +42,7 @@
         $errores+=1;
         }else{
             if(BD::compruebaUser($email))
-            $errores+=1;
+            $errores=0;
         }
         
         if($rol==1){
@@ -52,21 +53,22 @@
         
         if($errores==0){
             $u = new Usuario($email,$nombre,$apellidos,$password,$fecha,$rol,$foto);
-            BD::altaUser($u);
+            // BD::altaUser($u);
 
-            $html = '
+            $html = "
             <html>
             <head>
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
             <title>Credenciales</title>
             </head>
             <body>
-            <h2>Enlace para loguearse</h2>
-            <a href="localhost/autoescuela/Include/Principal.php">Pulse aqui para recuperar la contraseña</a>
-            </body>
+            <h2>Esta es su contraseña</h2>";
+            $html=$html.$u->get_password();
+
+            $html=$html.'</body>
             </html>';
 
-            correo::enviar("ryermar659@g.educaand.es", "RubenYera.12", "Credenciales de Usuario", "Credenciales", $html, $u->email, "recursos/perfil.png");
+            correo::enviarCorreo("ryeramartin@gmail.com", "rym.1234", "Credenciales de Usuario", "Credenciales", $html, $u->get_email(),"recursos/perfil.png");
 
         }
         
