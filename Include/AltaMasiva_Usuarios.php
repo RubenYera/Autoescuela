@@ -7,6 +7,7 @@
     <title>Document</title>
     <link  rel="icon"   href="../Recursos/logo.png" type="image/png" />
     <link rel="stylesheet" href="../css/main.css">
+    <script src="../JS/menu.js"></script>
     <script src="../JS/AltaMasivaUsuarios.js"></script>
 </head>
 <body>
@@ -45,12 +46,17 @@ if(isset($_POST["usuarios"])){
 
     for($i=0;$i<$n_usuarios;$i++){
         $usuario = new Usuario($a[$i][0],$a[$i][1],$a[$i][2],$a[$i][3],$a[$i][4],"Alumno");
-        BD::altaUsuario($usuario);
+        if(!BD::compruebaUser($usuario->get_email())){
+            BD::altaUsuario($usuario);
+        }else{
+            $obj->correosMalos.=$usuario->get_email()."\n";
+        }
+        
     }
     $obj->respuesta = true;
 
   } else {
     $obj->respuesta = false;
-
-}
+    }
+    echo json_encode($obj);
 ?>

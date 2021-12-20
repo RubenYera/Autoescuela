@@ -25,15 +25,16 @@ window.addEventListener("load", function(){
         var formData = new FormData();
             formData.append("usuarios",usuarios_json);
             formData.append("n_usuarios",usuarios.length);
-            fetch("AltaMasiva_Usuarios.php",{
+            fetch("../Include/AltaMasiva_Usuarios.php",{
                 method:"POST",
                 body:formData
             })
-                .then(response => response.JSON())
-                .catch(error=>console.log("Error", error))
+                .then(response => response.json())
+                .catch(error=>console.error("Error", error))
                 .then(response => {
                     if(response.respuesta){
                         alert("Mandado con exito");
+                        alert(response.correosMalos);
                     } else {
                         alert("Error");
                     }
