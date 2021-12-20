@@ -67,9 +67,9 @@ window.addEventListener("load",function(){
             .catch(error=>console.log("Error",error))
             .then(response=> {
                if(response.respuesta){
-                   alert("Exito");
+                   alert("Mandado con exito");
                }else{
-                   alert("Fallo");
+                   alert("Algo ha fallado");
                }
             })
     }

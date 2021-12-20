@@ -3,7 +3,7 @@
     <hr>
     <section class="footers">
         <p><a href="../recursos/GuiaEstilos.pdf">Guia de estilo</a></p>
-        <p><a href="./Mapa_Navegacion.html">Mapa web del sitio</a></p>
+        <p><a href="./Mapa_Navegacion.php">Mapa web del sitio</a></p>
     </section>
     <section class="footers">
         <p><a href="https://www.dgt.es">DGT</a></p>

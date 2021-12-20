@@ -62,7 +62,7 @@ require_once("BD.php");
             </div>
             <div>
                 <input type="submit" name="Enviar" id="Enviar"><br><br>
-                <a href="passwordOlvidada.php">He olvidado mi contraseña.</a>
+                <a href="./passwordOlvidada.php">He olvidado mi contraseña.</a>
             </div>
 
         </form>

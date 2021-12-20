@@ -53,7 +53,7 @@
         
         if($errores==0){
             $u = new Usuario($email,$nombre,$apellidos,$password,$fecha,$rol,$foto);
-            // BD::altaUser($u);
+            BD::altaUser($u);
 
             $html = "
             <html>
@@ -64,7 +64,6 @@
             <body>
             <h2>Esta es su contraseña</h2>";
             $html=$html.$u->get_password();
-
             $html=$html.'</body>
             </html>';
 

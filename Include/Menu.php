@@ -27,7 +27,7 @@
                         <a href="lista_Usuario.php"><i class="far fa-address-book"></i> Usuarios</a>
                         <ul class="submenu">
                             <li><a href="Register.php">Alta Usuario</a></li>
-                            <li><a href="#">Alta masiva usuarios</a></li>
+                            <li><a href="AltaMasiva_Usuarios.php">Alta masiva usuarios</a></li>
                         </ul>
                     </li>
                     <li class="categoria">

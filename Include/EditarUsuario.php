@@ -4,6 +4,7 @@
         header("Location: LoginForm.php");  
     }
     require_once("./Session.php");
+    Session::iniciar();
     $u = Session::leer('Usuario');
 
     if(isset($_POST['Enviar'])){
@@ -60,16 +61,16 @@
         <form action="EditarUsuario.php" enctype="multipart/form-data" class="alta" name="form1" method="post">
         <h1>Editar Usuario</h1>
             <div>
-                <p>Nombre: <input type="text" name="nombre" id="nombre" class="campo letras"></p> 
+                <p>Nombre: <input type="text" name="nombre" id="nombre" value="<?php echo $u->get_nombre();?>" class="campo letras"></p> 
             </div>
             <div>
-                <p>Apellidos: <input type="text" name="apellidos" id="apellidos" class="campo letras"></p> 
+                <p>Apellidos: <input type="text" name="apellidos" id="apellidos" value="<?php echo $u->get_apellidos();?>" class="campo letras"></p> 
             </div>
             <div>
-                <p>Contraseña: <input type="password" name="password" id="password" class="campo password"></p> 
+                <p>Contraseña: <input type="password" name="password" id="password" value="<?php echo $u->get_password();?>" class="campo password"></p> 
             </div>
             <div>
-                <p>Fecha Nacimiento: <input type="date" name="fechaNac" id="fechaNac" class="campo"></p> 
+                <p>Fecha Nacimiento: <input type="date" name="fechaNac" id="fechaNac" value="<?php echo $u->get_fechaNac();?>" class="campo"></p> 
             </div>
             <div>
                 <input type="file" name="imagen">

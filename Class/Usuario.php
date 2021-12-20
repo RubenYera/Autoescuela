@@ -10,7 +10,7 @@
         private $foto;
         private $activo;
         
-        public function __construct($email,$nombre,$apellidos,$password,$fechaNac,$rol,$foto="",$activo=0){
+        public function __construct($email,$nombre,$apellidos,$password,$fechaNac,$rol,$foto="",$activo=1){
             $this->email=$email;
             $this->nombre=$nombre;
             $this->apellidos=$apellidos;
